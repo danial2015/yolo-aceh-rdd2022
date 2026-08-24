@@ -50,6 +50,7 @@ from ultralytics.nn.modules import (
     Detect,
     DWConv,
     DWConvTranspose2d,
+    ECAAttention,
     Focus,
     GhostBottleneck,
     GhostConv,
@@ -2100,6 +2101,9 @@ def parse_model(d, ch, verbose=True):
             c2 = args[1] if args[3] else args[1] * 4
         elif m is torch.nn.BatchNorm2d:
             args = [ch[f]]
+        elif m is ECAAttention:
+            c2 = ch[f]
+            args = [c2, *args]
         elif m is Concat:
             c2 = sum(ch[x] for x in f)
         elif m in frozenset(
