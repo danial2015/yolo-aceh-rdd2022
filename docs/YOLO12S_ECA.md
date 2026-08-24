@@ -34,7 +34,7 @@ t = floor(abs((log2(C) + 1) / 2))
 k = t jika t ganjil, selain itu t + 1
 ```
 
-Pada YOLO12-Small, P3, P4, dan P5 masing-masing memiliki 128, 256, dan 512 kanal. Ketiganya menghasilkan kernel
+Pada YOLO12-Small, P3, P4, dan P5 masing-masing memiliki 256, 256, dan 512 kanal. Ketiganya menghasilkan kernel
 ganjil `k=5`, sehingga konfigurasi memakai tiga modul ECA dengan total 15 parameter tambahan.
 
 ```text
