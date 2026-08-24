@@ -7,8 +7,9 @@ penting dengan biaya komputasi yang sangat kecil. Model didefinisikan oleh
 [`yolo12-eca.yaml`](../ultralytics/cfg/models/12/yolo12-eca.yaml) dan menggunakan modul
 [`ECAAttention`](../ultralytics/nn/modules/conv.py).
 
-Implementasi ini adalah konfigurasi deteksi yang harus dilatih dari awal atau dari checkpoint hasil pelatihan sendiri;
-checkpoint ECA-Net terlatih tidak disertakan.
+Implementasi ini tidak menyediakan checkpoint ECA-Net terlatih. Notebook Kaggle menyelaraskan dan mentransfer bobot
+yang kompatibel dari checkpoint resmi `yolo12s.pt`; tiga modul ECA dan tensor head klasifikasi yang tidak sesuai dengan
+lima kelas tetap diinisialisasi untuk dipelajari saat training.
 
 ## Perubahan kode
 
@@ -66,6 +67,10 @@ from ultralytics import YOLO
 model = YOLO("runs/detect/train/weights/best.pt")
 results = model("path/to/image.jpg")
 ```
+
+Notebook Kaggle memetakan indeks layer setelah penyisipan ECA agar backbone dan neck menerima bobot pretrained
+YOLO12-Small yang bentuknya cocok. Transfer ini mempercepat konvergensi dibanding inisialisasi acak, tetapi tidak
+mengubah kebutuhan untuk melatih ECA dan head lima kelas pada dataset CH-RDD2022.
 
 ### CLI
 
