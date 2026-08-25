@@ -19,6 +19,7 @@ __all__ = (
     "DWConv",
     "DWConvTranspose2d",
     "ECAAttention",
+    "EMAAttention",
     "Focus",
     "GhostConv",
     "Index",
@@ -581,6 +582,55 @@ class ECAAttention(nn.Module):
         y = self.avg_pool(x).squeeze(-1).transpose(-1, -2)
         y = self.conv(y).transpose(-1, -2).unsqueeze(-1)
         return x * self.act(y)
+
+
+class EMAAttention(nn.Module):
+    """Efficient Multi-scale Attention (EMA) module with grouped cross-spatial learning.
+
+    EMA jointly models local 3x3 context and directional spatial context while processing channel groups independently.
+    It preserves the input shape and is intended for insertion after a backbone feature stage.
+
+    Args:
+        c1 (int): Number of input channels.
+        factor (int, optional): Number of channel groups. Defaults to 8.
+    """
+
+    def __init__(self, c1: int, factor: int = 8) -> None:
+        """Initialize EMA attention for an input with ``c1`` channels."""
+        super().__init__()
+        if c1 % factor:
+            raise ValueError(f"EMAAttention requires c1 ({c1}) to be divisible by factor ({factor}).")
+        self.groups = factor
+        channels_per_group = c1 // factor
+        self.pool = nn.AdaptiveAvgPool2d(1)
+        self.conv1x1 = nn.Conv2d(channels_per_group, channels_per_group, 1, 1, 0)
+        self.conv3x3 = nn.Conv2d(channels_per_group, channels_per_group, 3, 1, 1)
+        self.gn = nn.GroupNorm(channels_per_group, channels_per_group)
+        self.softmax = nn.Softmax(dim=-1)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply grouped multi-scale channel and spatial attention.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (batch, channels, height, width).
+
+        Returns:
+            (torch.Tensor): Attention-refined tensor with the same shape as the input.
+        """
+        b, c, h, w = x.shape
+        group_x = x.reshape(b * self.groups, c // self.groups, h, w)
+        x_h = group_x.mean(dim=3, keepdim=True)
+        x_w = group_x.mean(dim=2, keepdim=True).transpose(2, 3)
+        hw = self.conv1x1(torch.cat((x_h, x_w), dim=2))
+        x_h, x_w = torch.split(hw, [h, w], dim=2)
+        x1 = self.gn(group_x * x_h.sigmoid() * x_w.transpose(2, 3).sigmoid())
+        x2 = self.conv3x3(group_x)
+        x1_score = self.softmax(self.pool(x1).reshape(b * self.groups, -1, 1).transpose(1, 2))
+        x2_score = self.softmax(self.pool(x2).reshape(b * self.groups, -1, 1).transpose(1, 2))
+        x1_features = x1.reshape(b * self.groups, c // self.groups, -1)
+        x2_features = x2.reshape(b * self.groups, c // self.groups, -1)
+        weights = (x1_score @ x2_features + x2_score @ x1_features).reshape(b * self.groups, 1, h, w)
+        return (group_x * weights.sigmoid()).reshape(b, c, h, w)
 
 
 class SpatialAttention(nn.Module):
