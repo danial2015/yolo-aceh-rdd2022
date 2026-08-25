@@ -592,10 +592,10 @@ class EMAAttention(nn.Module):
 
     Args:
         c1 (int): Number of input channels.
-        factor (int, optional): Number of channel groups. Defaults to 8.
+        factor (int, optional): Number of channel groups. Defaults to 32.
     """
 
-    def __init__(self, c1: int, factor: int = 8) -> None:
+    def __init__(self, c1: int, factor: int = 32) -> None:
         """Initialize EMA attention for an input with ``c1`` channels."""
         super().__init__()
         if c1 % factor:
