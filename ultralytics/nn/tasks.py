@@ -68,6 +68,7 @@ from ultralytics.nn.modules import (
     ResNetLayer,
     RTDETRDecoder,
     SCDown,
+    SPDConv,
     Segment,
     Segment26,
     SemanticSegment,
@@ -2022,6 +2023,7 @@ def parse_model(d, ch, verbose=True):
             RepC3,
             PSA,
             SCDown,
+            SPDConv,
             C2fCIB,
             A2C2f,
         }

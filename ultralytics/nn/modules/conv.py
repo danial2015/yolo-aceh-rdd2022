@@ -24,6 +24,7 @@ __all__ = (
     "Index",
     "LightConv",
     "RepConv",
+    "SPDConv",
     "SpatialAttention",
 )
 
@@ -146,6 +147,31 @@ class Conv2(Conv):
         self.conv.weight.data += w
         self.__delattr__("cv2")
         self.forward = self.forward_fuse
+
+
+class SPDConv(nn.Module):
+    """Space-to-depth convolution for information-preserving downsampling.
+
+    The space-to-depth operation reduces each spatial dimension by two while moving the corresponding pixels into the
+    channel dimension. A stride-one convolution then projects the expanded channels to the requested output channels.
+    """
+
+    def __init__(self, c1, c2, k=3, act=True):
+        """Initialize an SPD-Conv layer.
+
+        Args:
+            c1 (int): Number of input channels.
+            c2 (int): Number of output channels.
+            k (int): Convolution kernel size after the space-to-depth operation.
+            act (bool | nn.Module): Activation function.
+        """
+        super().__init__()
+        self.space_to_depth = nn.PixelUnshuffle(2)
+        self.conv = Conv(c1 * 4, c2, k, 1, act=act)
+
+    def forward(self, x):
+        """Apply space-to-depth followed by a stride-one convolution."""
+        return self.conv(self.space_to_depth(x))
 
 
 class LightConv(nn.Module):

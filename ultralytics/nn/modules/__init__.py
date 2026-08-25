@@ -75,6 +75,7 @@ from .conv import (
     Index,
     LightConv,
     RepConv,
+    SPDConv,
     SpatialAttention,
 )
 from .head import (
@@ -180,6 +181,7 @@ __all__ = (
     "RepVGGDW",
     "ResNetLayer",
     "SCDown",
+    "SPDConv",
     "Segment",
     "Segment26",
     "SemanticSegment",
