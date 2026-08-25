@@ -27,10 +27,12 @@ __all__ = (
     "SPP",
     "SPPELAN",
     "SPPF",
+    "SimSPPF",
     "AConv",
     "ADown",
     "Attention",
     "BNContrastiveHead",
+    "BiFPNFusion",
     "Bottleneck",
     "BottleneckCSP",
     "C2f",
@@ -47,6 +49,7 @@ __all__ = (
     "HGBlock",
     "HGStem",
     "ImagePoolingAttn",
+    "LSKAttention",
     "Proto",
     "RepC3",
     "RepNCSPELAN4",
@@ -238,6 +241,92 @@ class SPPF(nn.Module):
         y.extend(self.m(y[-1]) for _ in range(getattr(self, "n", 3)))
         y = self.cv2(torch.cat(y, 1))
         return y + x if getattr(self, "add", False) else y
+
+
+class SimSPPF(nn.Module):
+    """Simplified Spatial Pyramid Pooling Fast module used by BL-YOLOv8.
+
+    SimSPPF retains the three sequential 5x5 max-pooling operations of SPPF but uses Conv-BN-ReLU blocks, matching
+    the BL-YOLOv8 proposed method.
+
+    Args:
+        c1 (int): Number of input channels.
+        c2 (int): Number of output channels.
+        k (int, optional): Max-pooling kernel size. Defaults to 5.
+    """
+
+    def __init__(self, c1: int, c2: int, k: int = 5) -> None:
+        """Initialize SimSPPF with Conv-BN-ReLU projections and repeated max pooling."""
+        super().__init__()
+        c_ = c1 // 2
+        self.cv1 = Conv(c1, c_, 1, 1, act=nn.ReLU())
+        self.cv2 = Conv(c_ * 4, c2, 1, 1, act=nn.ReLU())
+        self.m = nn.MaxPool2d(kernel_size=k, stride=1, padding=k // 2)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply three sequential max-pooling operations and concatenate their features."""
+        y1 = self.cv1(x)
+        y2 = self.m(y1)
+        y3 = self.m(y2)
+        return self.cv2(torch.cat((y1, y2, y3, self.m(y3)), 1))
+
+
+class LSKAttention(nn.Module):
+    """Large Selective Kernel attention module used by BL-YOLOv8.
+
+    The module decomposes large kernels into depthwise 5x5 and dilated depthwise 7x7 convolutions, then applies
+    spatially selective fusion to their responses.
+
+    Args:
+        c1 (int): Number of input and output channels.
+    """
+
+    def __init__(self, c1: int) -> None:
+        """Initialize the LSK spatial attention projections."""
+        super().__init__()
+        c_ = c1 // 2
+        self.conv0 = nn.Conv2d(c1, c1, 5, padding=2, groups=c1)
+        self.conv_spatial = nn.Conv2d(c1, c1, 7, stride=1, padding=9, groups=c1, dilation=3)
+        self.conv1 = nn.Conv2d(c1, c_, 1)
+        self.conv2 = nn.Conv2d(c1, c_, 1)
+        self.conv_squeeze = nn.Conv2d(2, 2, 7, padding=3)
+        self.conv = nn.Conv2d(c_, c1, 1)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply spatially selected large-kernel attention to the input tensor."""
+        attn1 = self.conv0(x)
+        attn2 = self.conv_spatial(attn1)
+        attn1 = self.conv1(attn1)
+        attn2 = self.conv2(attn2)
+        attn = torch.cat((attn1, attn2), 1)
+        avg_attn = torch.mean(attn, 1, keepdim=True)
+        max_attn, _ = torch.max(attn, 1, keepdim=True)
+        spatial_attn = self.conv_squeeze(torch.cat((avg_attn, max_attn), 1)).sigmoid()
+        attn = attn1 * spatial_attn[:, 0:1] + attn2 * spatial_attn[:, 1:2]
+        return x * self.conv(attn)
+
+
+class BiFPNFusion(nn.Module):
+    """Normalized weighted feature fusion used by the BL-YOLOv8 BiFPN neck.
+
+    Args:
+        n_inputs (int): Number of same-shape feature maps to fuse.
+        epsilon (float, optional): Numerical stabilizer for weight normalization. Defaults to 1e-4.
+    """
+
+    def __init__(self, n_inputs: int, epsilon: float = 1e-4) -> None:
+        """Initialize learnable non-negative fusion weights."""
+        super().__init__()
+        self.weights = nn.Parameter(torch.ones(n_inputs, dtype=torch.float32), requires_grad=True)
+        self.epsilon = epsilon
+
+    def forward(self, x: list[torch.Tensor]) -> torch.Tensor:
+        """Fuse equal-shape features using normalized non-negative weights."""
+        if len(x) != len(self.weights):
+            raise ValueError(f"BiFPNFusion expects {len(self.weights)} inputs, but received {len(x)}.")
+        weights = F.relu(self.weights)
+        weights = weights / (weights.sum() + self.epsilon)
+        return sum(weight * feature for weight, feature in zip(weights, x))
 
 
 class C1(nn.Module):
