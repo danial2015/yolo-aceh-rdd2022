@@ -18,6 +18,7 @@ __all__ = (
     "ConvTranspose",
     "DWConv",
     "DWConvTranspose2d",
+    "EMAAttention",
     "Focus",
     "GhostConv",
     "Index",
@@ -349,6 +350,48 @@ class GhostConv(nn.Module):
         """
         y = self.cv1(x)
         return torch.cat((y, self.cv2(y)), 1)
+
+
+class EMAAttention(nn.Module):
+    """Efficient Multi-scale Attention (EMA) module with grouped cross-spatial learning.
+
+    EMA models directional and local spatial context independently within each channel group. It preserves the input
+    shape, making it suitable for refinement after a backbone stage.
+
+    Args:
+        c1 (int): Number of input and output channels.
+        factor (int, optional): Number of channel groups. Defaults to 32.
+    """
+
+    def __init__(self, c1: int, factor: int = 32) -> None:
+        """Initialize EMA attention with a fixed number of channel groups."""
+        super().__init__()
+        if c1 % factor:
+            raise ValueError(f"EMAAttention requires c1 ({c1}) to be divisible by factor ({factor}).")
+        self.groups = factor
+        channels_per_group = c1 // factor
+        self.pool = nn.AdaptiveAvgPool2d(1)
+        self.conv1x1 = nn.Conv2d(channels_per_group, channels_per_group, 1)
+        self.conv3x3 = nn.Conv2d(channels_per_group, channels_per_group, 3, padding=1)
+        self.gn = nn.GroupNorm(channels_per_group, channels_per_group)
+        self.softmax = nn.Softmax(dim=-1)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply grouped multi-scale attention and return a tensor with the input shape."""
+        batch, channels, height, width = x.shape
+        group_x = x.reshape(batch * self.groups, channels // self.groups, height, width)
+        x_h = group_x.mean(dim=3, keepdim=True)
+        x_w = group_x.mean(dim=2, keepdim=True).transpose(2, 3)
+        hw = self.conv1x1(torch.cat((x_h, x_w), dim=2))
+        x_h, x_w = torch.split(hw, [height, width], dim=2)
+        x1 = self.gn(group_x * x_h.sigmoid() * x_w.transpose(2, 3).sigmoid())
+        x2 = self.conv3x3(group_x)
+        x1_score = self.softmax(self.pool(x1).reshape(batch * self.groups, -1, 1).transpose(1, 2))
+        x2_score = self.softmax(self.pool(x2).reshape(batch * self.groups, -1, 1).transpose(1, 2))
+        x1_features = x1.reshape(batch * self.groups, channels // self.groups, -1)
+        x2_features = x2.reshape(batch * self.groups, channels // self.groups, -1)
+        weights = (x1_score @ x2_features + x2_score @ x1_features).reshape(batch * self.groups, 1, height, width)
+        return (group_x * weights.sigmoid()).reshape(batch, channels, height, width)
 
 
 class RepConv(nn.Module):
