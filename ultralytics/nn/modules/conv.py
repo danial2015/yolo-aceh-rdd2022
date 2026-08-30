@@ -18,7 +18,6 @@ __all__ = (
     "ConvTranspose",
     "DWConv",
     "DWConvTranspose2d",
-    "ECAAttention",
     "Focus",
     "GhostConv",
     "Index",
@@ -572,41 +571,6 @@ class ChannelAttention(nn.Module):
             (torch.Tensor): Channel-attended output tensor.
         """
         return x * self.act(self.fc(self.pool(x)))
-
-
-class ECAAttention(nn.Module):
-    """Efficient Channel Attention (ECA) module for lightweight channel recalibration.
-
-    The 1D convolution kernel is selected from the input channel count as proposed in ECA-Net, avoiding the channel
-    reduction used by squeeze-and-excitation attention.
-
-    Args:
-        c1 (int): Number of input channels.
-        gamma (int, optional): Kernel-size scaling factor. Defaults to 2.
-        b (int, optional): Kernel-size offset. Defaults to 1.
-    """
-
-    def __init__(self, c1: int, gamma: int = 2, b: int = 1) -> None:
-        """Initialize ECA attention with an odd, channel-adaptive kernel."""
-        super().__init__()
-        t = int(abs((math.log2(c1) + b) / gamma))
-        k = max(t if t % 2 else t + 1, 1)
-        self.avg_pool = nn.AdaptiveAvgPool2d(1)
-        self.conv = nn.Conv1d(1, 1, kernel_size=k, padding=k // 2, bias=False)
-        self.act = nn.Sigmoid()
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Apply channel attention to input tensor.
-
-        Args:
-            x (torch.Tensor): Input tensor of shape (batch, channels, height, width).
-
-        Returns:
-            (torch.Tensor): Channel-attended tensor with the same shape as the input.
-        """
-        y = self.avg_pool(x).squeeze(-1).transpose(-1, -2)
-        y = self.conv(y).transpose(-1, -2).unsqueeze(-1)
-        return x * self.act(y)
 
 
 class SpatialAttention(nn.Module):
