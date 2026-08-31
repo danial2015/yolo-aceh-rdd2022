@@ -81,7 +81,7 @@ transfer pretrained, training, evaluasi validation/test, dan pembuatan ZIP hasil
 | --- | --- |
 | `yolo12-spd-conv` | `examples/kaggle_yolo12s_spd_rdd2022.ipynb` |
 | `yolo12-spd-conv-ema32` | `examples/kaggle_yolo12s_spd_ema32_rdd2022.ipynb` |
-| `yolo12-spd-ema32-continuity` | `examples/kaggle_yolo12s_spd_ema32_rdd2022.ipynb` dan `examples/kaggle_yolo12s_spd_ema32_clean_logs_rdd2022.ipynb` |
+| `yolo12-spd-ema32-continuity` | `examples/kaggle_yolo12s_spd_ema32_continuity_rdd2022.ipynb` dan `examples/kaggle_yolo12s_spd_ema32_clean_logs_rdd2022.ipynb` |
 
 Semua notebook Kaggle di atas menggunakan dataset berikut:
 
