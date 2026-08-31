@@ -386,8 +386,14 @@ class EMAAttention(nn.Module):
         factor (int): Number of channel groups. Defaults to 32.
     """
 
-    def __init__(self, c1: int, factor: int = 32) -> None:
-        """Initialize EMA attention for a channel count divisible by ``factor``."""
+    def __init__(self, c1: int, factor: int = 32, residual_scale: float = 1e-3) -> None:
+        """Initialize EMA attention as a near-identity residual adapter.
+
+        Args:
+            c1 (int): Number of input and output channels.
+            factor (int): Number of channel groups.
+            residual_scale (float): Initial interpolation from the input to the attended feature.
+        """
         super().__init__()
         if c1 % factor:
             raise ValueError(f"EMAAttention requires c1 ({c1}) to be divisible by factor ({factor}).")
@@ -398,6 +404,7 @@ class EMAAttention(nn.Module):
         self.conv3x3 = nn.Conv2d(channels_per_group, channels_per_group, 3, padding=1)
         self.gn = nn.GroupNorm(channels_per_group, channels_per_group)
         self.softmax = nn.Softmax(dim=-1)
+        self.residual_scale = nn.Parameter(torch.tensor(residual_scale))
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Apply grouped multi-scale attention while preserving the input shape."""
@@ -414,7 +421,8 @@ class EMAAttention(nn.Module):
         x1_features = x1.reshape(batch * self.groups, channels // self.groups, -1)
         x2_features = x2.reshape(batch * self.groups, channels // self.groups, -1)
         weights = (x1_score @ x2_features + x2_score @ x1_features).reshape(batch * self.groups, 1, height, width)
-        return (group_x * weights.sigmoid()).reshape(batch, channels, height, width)
+        attended = (group_x * weights.sigmoid()).reshape(batch, channels, height, width)
+        return x + self.residual_scale * (attended - x)
 
 
 class RepConv(nn.Module):

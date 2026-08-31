@@ -2,16 +2,39 @@
 
 ## Ringkasan
 
-Pekerjaan ini menggantikan eksperimen lama `yolo12-spd-eca` dengan dua varian ablation yang lebih jelas:
+Pekerjaan ini menggantikan eksperimen lama `yolo12-spd-eca` dengan tiga varian ablation yang lebih jelas:
 
 | Branch | Arsitektur | Status |
 | --- | --- | --- |
 | `yolo12-spd-conv` | YOLO12-Small + SPD-Conv | Aktif |
-| `yolo12-spd-conv-ema32` | YOLO12-Small + SPD-Conv + EMA-32 | Aktif |
+| `yolo12-spd-conv-ema32` | YOLO12-Small + SPD-Conv + EMA-32 | Basis eksperimen awal |
+| `yolo12-spd-ema32-continuity` | YOLO12-Small + SPD-Conv + residual EMA-32 | Aktif, inisialisasi pretrained dipertahankan |
 | `yolo12-spd-eca` | YOLO12-Small + SPD-Conv + ECA | Dihapus dari lokal dan GitHub |
 
-Kedua branch aktif tidak memakai ECA atau GhostConv. Branch `yolo12-spd-conv-ema32` merupakan turunan dari
-`yolo12-spd-conv`, sehingga perubahan SPD-Conv identik pada kedua eksperimen.
+Ketiga branch ini tidak memakai ECA atau GhostConv. Branch `yolo12-spd-conv-ema32` merupakan turunan dari
+`yolo12-spd-conv`, sedangkan branch continuity adalah turunannya; implementasi SPD-Conv inti tetap sama.
+
+## Pembaruan branch continuity
+
+Branch `yolo12-spd-ema32-continuity` diturunkan dari `yolo12-spd-conv-ema32`. Branch ini memperbaiki dua
+diskontinuitas terhadap checkpoint `yolo12s.pt`:
+
+1. Tiga convolution downsampling pretrained direparameterisasi secara tepat ke `PixelUnshuffle(2)` diikuti Conv
+   stride-1. Pasangannya adalah source-target `3->3`, `5->6`, dan `7->8`. Seluruh bobot tambahan SPD di-zero-kan,
+   lalu bobot convolution dan seluruh state BatchNorm dipindahkan.
+2. EMA-32 menjadi residual adapter:
+
+   ```text
+   output = input + residual_scale * (attended - input)
+   ```
+
+   Nilai awal `residual_scale=0.001` membuat gangguan fitur sangat kecil tetapi tetap memberi gradien kepada bobot
+   EMA sejak langkah optimisasi pertama.
+
+Sebelum training, notebook sementara mengatur scale EMA menjadi nol dan membandingkan output model proposed terhadap
+`yolo12s.pt` pada input sintetis. Training dihentikan bila keluaran 80 kelas tersebut tidak setara secara numerik.
+Setelah pemeriksaan lulus, scale EMA dikembalikan ke `0.001`; ketika trainer menyesuaikan dataset lima kelas, hanya
+head deteksi yang memang tidak kompatibel dengan jumlah kelas harus dilatih kembali.
 
 ## Perubahan arsitektur
 
@@ -58,8 +81,9 @@ transfer pretrained, training, evaluasi validation/test, dan pembuatan ZIP hasil
 | --- | --- |
 | `yolo12-spd-conv` | `examples/kaggle_yolo12s_spd_rdd2022.ipynb` |
 | `yolo12-spd-conv-ema32` | `examples/kaggle_yolo12s_spd_ema32_rdd2022.ipynb` |
+| `yolo12-spd-ema32-continuity` | `examples/kaggle_yolo12s_spd_ema32_rdd2022.ipynb` dan `examples/kaggle_yolo12s_spd_ema32_clean_logs_rdd2022.ipynb` |
 
-Keduanya menggunakan dataset Kaggle berikut:
+Semua notebook Kaggle di atas menggunakan dataset berikut:
 
 ```text
 /kaggle/input/datasets/danialalfayyadh/ch-rdd-2022/datasets-china-split-fix
@@ -87,14 +111,16 @@ gradient accumulation. Notebook memeriksa `IMGSZ % 32 == 0` sebelum model dibang
 
 ## Pretrained YOLO12-Small
 
-Kedua notebook memulai dari `yolo12s.pt` resmi. Karena tensor SPD-Conv dan EMA-32 tidak memiliki pasangan identik
-pada checkpoint original, notebook hanya mentransfer tensor yang memiliki nama layer dan bentuk yang kompatibel.
+Notebook branch awal memulai dari `yolo12s.pt` resmi dengan mentransfer tensor yang memiliki nama layer dan bentuk
+yang kompatibel. Pada branch `yolo12-spd-ema32-continuity`, transfer tersebut diperluas dengan reparameterisasi
+exact untuk Conv-to-SPD dan pemeriksaan kontinuitas fungsi.
 
 - Pada varian SPD-Conv, indeks layer tidak berubah sehingga pencocokan dilakukan berdasarkan nama dan bentuk tensor.
 - Pada varian SPD-Conv + EMA-32, semua layer original mulai layer 5 dipetakan ke indeks target `source + 1` karena EMA
   disisipkan setelah layer backbone 4.
-- Tensor SPD-Conv, EMA-32, dan head lima kelas yang tidak kompatibel tetap diinisialisasi untuk dipelajari saat
-  fine-tuning.
+- Pada branch continuity, tiga Conv stride-2 tersebut diinisialisasi dari tensor pretrained dengan pemetaan
+  Conv-to-SPD exact, termasuk BatchNorm. EMA memakai residual scale kecil, bukan langsung mengganti fitur P3.
+- Head lima kelas tetap disesuaikan oleh trainer saat fine-tuning karena checkpoint source berisi 80 kelas.
 
 Kebijakan ini mencegah pemuatan tensor dengan bentuk salah, sekaligus tetap memakai representasi pretrained dari
 bagian YOLO12-Small yang kompatibel.
@@ -109,6 +135,7 @@ bagian YOLO12-Small yang kompatibel.
 | Forward CPU, input `1 x 3 x 640 x 640` | Output `1 x 9 x 8400` | Output `1 x 9 x 8400` |
 | Backward sintetis dan pemeriksaan gradien hingga | Tidak dijalankan terpisah | Lulus |
 | Smoke test transfer tensor kompatibel | Lulus | Lulus |
+| Pemeriksaan output pretrained source-proposed pada 80 kelas | Tidak ada | Lulus di branch `yolo12-spd-ema32-continuity` |
 
 Jumlah parameter untuk lima kelas adalah sekitar 15.01 juta pada SPD-Conv dan 15.01 juta pada SPD-Conv + EMA-32.
 SPD-Conv menambah biaya memori dibanding YOLO12-Small original; karena itu batch lebih besar dari 16 perlu diuji secara
