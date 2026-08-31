@@ -1688,7 +1688,7 @@ class AAttn(nn.Module):
 
         self.qkv = Conv(dim, all_head_dim * 3, 1, act=False)
         self.proj = Conv(all_head_dim, dim, 1, act=False)
-        self.pe = Conv(all_head_dim, all_head_dim, 7, 1, 3, g=all_head_dim, act=False)
+        self.pe = Conv(all_head_dim, all_head_dim, 7, 1, 3, g=all_head_dim, act=False, bias=True)
 
     def __setstate__(self, state):
         """Add missing all_head_dim attribute to old checkpoints."""

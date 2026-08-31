@@ -21,7 +21,9 @@ diskontinuitas terhadap checkpoint `yolo12s.pt`:
 
 1. Tiga convolution downsampling pretrained direparameterisasi secara tepat ke `PixelUnshuffle(2)` diikuti Conv
    stride-1. Pasangannya adalah source-target `3->3`, `5->6`, dan `7->8`. Seluruh bobot tambahan SPD di-zero-kan,
-   lalu bobot convolution dan seluruh state BatchNorm dipindahkan.
+   lalu sembilan irisan kernel per layer ditulis dengan indexed assignment yang diverifikasi dan seluruh state
+   BatchNorm dipindahkan. Ini penting: `.copy_()` pada advanced indexing PyTorch hanya mengubah tensor sementara,
+   sehingga tidak boleh digunakan untuk transfer tersebut.
 2. EMA-32 menjadi residual adapter:
 
    ```text
@@ -31,8 +33,10 @@ diskontinuitas terhadap checkpoint `yolo12s.pt`:
    Nilai awal `residual_scale=0.001` membuat gangguan fitur sangat kecil tetapi tetap memberi gradien kepada bobot
    EMA sejak langkah optimisasi pertama.
 
-Sebelum training, notebook sementara mengatur scale EMA menjadi nol dan membandingkan output model proposed terhadap
-`yolo12s.pt` pada input sintetis. Training dihentikan bila keluaran 80 kelas tersebut tidak setara secara numerik.
+Checkpoint `yolo12s.pt` rilis resmi juga memiliki bias pada convolution positional encoding `AAttn`; implementasi
+`Conv` dan `AAttn` pada branch ini kompatibel dengan state tersebut sehingga semua tensor YOLO12s non-kustom dapat
+ditransfer. Sebelum training, notebook sementara mengatur scale EMA menjadi nol dan membandingkan output model
+proposed terhadap `yolo12s.pt` pada input sintetis. Training dihentikan bila keluaran 80 kelas tersebut tidak setara secara numerik.
 Setelah pemeriksaan lulus, scale EMA dikembalikan ke `0.001`; ketika trainer menyesuaikan dataset lima kelas, hanya
 head deteksi yang memang tidak kompatibel dengan jumlah kelas harus dilatih kembali.
 
