@@ -42,9 +42,10 @@ There is deliberately no EMA module at P5, and no GhostConv in the stem or early
 | --- | --- |
 | `ultralytics/nn/modules/conv.py` | Adds public `EMA` using direct grouped Efficient Multi-scale Attention. Its affinity softmax and matrix products use FP32 under AMP, while the returned feature keeps the input dtype. |
 | `ultralytics/nn/modules/__init__.py` | Re-exports `EMA` from the stable module namespace. |
-| `ultralytics/nn/tasks.py` | Adds the smallest shape-preserving parser rule: `EMA(channels_in, factor)` with `channels_out = channels_in`. It is not placed in `base_modules` or `repeat_modules`. |
-| `ultralytics/cfg/models/12/yolo12s-ema-ghost.yaml` | Adds the single proposed YOLO12s graph. |
-| `tests/test_yolo12_ema_ghost.py` | Adds focused, dependency-light structural tests. |
+| `ultralytics/nn/tasks.py` | Adds the shape-preserving EMA parser rule and a validated semantic state-dict remap in `BaseModel.load()`. |
+| `ultralytics/cfg/models/12/yolo12s-ema-ghost.yaml` | Adds the single proposed graph and its declarative baseline-to-proposed layer map. |
+| `ultralytics/engine/model.py` | Exposes the load report as `YOLO(...).pretrained_transfer_report`. |
+| `tests/test_yolo12_ema_ghost.py` | Adds focused structural and semantic-initialization regression tests. |
 
 The proposed model can be instantiated with:
 
@@ -52,8 +53,14 @@ The proposed model can be instantiated with:
 from ultralytics import YOLO
 
 model = YOLO("ultralytics/cfg/models/12/yolo12s-ema-ghost.yaml")
+model.load("yolo12s.pt")
+print(model.pretrained_transfer_report)
 model.info()
 ```
+
+The same mapping is used by the normal training path when the checkpoint is explicitly selected, for example
+`model.train(data="data.yaml", pretrained="yolo12s.pt")`. Bare `pretrained=True` does not select a source checkpoint
+for a model constructed only from YAML.
 
 ## Structural validation
 
@@ -65,33 +72,63 @@ Validation was run from this branch using the repository package from the active
 | EMA standalone | PASS | `EMA(128, 32)` and `EMA(256, 32)` preserve shape and have finite backward gradients. Invalid channel/group combinations raise `ValueError`. |
 | AMP-oriented CPU smoke check | PASS | bfloat16-autocast forward/backward produced finite loss and input gradients at both P3 and P4 channel counts. |
 | YAML parse and model build | PASS | `DetectionModel` resolves `EMA`, `GhostConv`, and the new parser semantics. |
-| Focused test suite | PASS | Three `unittest` tests pass: EMA behavior, group validation, and graph/64-pixel forward geometry. |
+| Focused test suite | PASS | Six `unittest` tests pass, including sentinel-based semantic-transfer checks for `nc=80`, `nc=5`, and an already-proposed checkpoint. |
 | 640 dummy forward | PASS | A 5-class build returns prediction shape `(1, 9, 8400)` and the exact feature shapes in the architecture table. |
 | Detect routing | PASS | Detection head sources are `[15, 19, 22]`: EMA-refined P3, EMA-refined P4, and unmodified final P5. |
+| Semantic pretrained transfer | PASS | The official `yolo12s.pt` maps P4, P5, and Detect by architecture semantics rather than their old numeric indices. |
 | Checkpoint serialization | PASS | A temporary proposed checkpoint reloads through both `load_checkpoint()` and safe loading with class path `ultralytics.nn.modules.conv.EMA`. |
 
 The local Python environment is CPU-only and lacks installed `torchvision` distribution metadata. A temporary,
 process-local metadata workaround was used only to execute the repository validation; it is not committed to source or
 needed by a normally installed Ultralytics environment.
 
-## Pretrained checkpoint behavior
+## Semantic pretrained initialization
 
-The official `yolo12s.pt` checkpoint was tested with the repository's normal `BaseModel.load()` mechanism. The result
-was `452/715` exact key-and-shape state entries transferred.
+The original key-and-shape loader retained only `452/715` target state entries. Of those, 450 were valid unchanged
+modules, while two `model.20.*.bn.num_batches_tracked` counters were an accidental collision between the baseline P5
+`C3k2` and the proposed P4→P5 GhostConv. It also missed the unchanged P4 fusion, P5 fusion, and Detect weights because
+their numeric indices shifted.
 
-This is intentionally **partial** transfer, not full pretrained continuity:
+The proposed YAML now declares this source-to-target semantic graph map:
 
-- 450 transferred entries belong to unchanged parameterized layers through the retained backbone and the unchanged
-  indexed P3-path modules.
-- The two newly inserted EMA modules and two GhostConv replacements are initialized as new modules; their learnable
-  tensors do not have a one-to-one source tensor in `yolo12s.pt`.
-- P4/P5 fusion and detection layers are renumbered after the EMA insertions, so the normal key-and-shape loader does
-  not forcibly map their later baseline weights into different modules.
-- The remaining two matching entries are BatchNorm `num_batches_tracked` counters whose names happen to overlap at
-  layer 20; they are bookkeeping counters, not learnable GhostConv weights.
+| Baseline YOLO12s | Proposed YOLO12s EMA-Ghost | Reason |
+| ---: | ---: | --- |
+| 0–14 | 0–14 | Unchanged backbone and top-down/P3 path. |
+| 16 | 17 | Bottom-up P4 `Concat`; no parameters, retained as graph validation. |
+| 17 | 18 | Final fused P4 `A2C2f`; all compatible tensors are retained. |
+| 19 | 21 | Bottom-up P5 `Concat`; no parameters, retained as graph validation. |
+| 20 | 22 | Final P5 `C3k2`; all compatible tensors are retained. |
+| 21 | 23 | Detect; regression and compatible classification tensors are retained. |
 
-This behavior uses the official loader without custom remapping or forced tensor reshaping. It is therefore safe to
-start a fine-tuning run with compatible pretrained tensors while keeping the proposed modules genuinely new.
+Baseline layers 15 and 18 are intentionally absent: their stride-2 `Conv` modules are replaced by GhostConv and have
+no exact one-to-one tensor mapping. EMA layers 15 and 19 are also new.
+
+The semantic policy activates only when the source has the expected 22-layer YOLO12 detection graph, Detect inputs
+`[14, 17, 20]`, and matching module types for every declared pair. If the source is already a proposed checkpoint or
+does not match this fingerprint, loading falls back to the repository's standard key-and-shape behavior. The remapped
+state dictionary is filtered—not merged with the raw source keys—so the two incorrect GhostConv BatchNorm counter
+collisions cannot recur.
+
+### Actual official-checkpoint results
+
+The following measurements use the released `yolo12s.pt` checkpoint from the official assets release. It has 699 state
+entries; eight legacy attention positional-convolution bias entries at baseline layers 6/8 have no counterpart in the
+current repository source and are excluded independently of this proposed architecture.
+
+| Target configuration | Exact tensors from official source | Target state retained | Exact target parameter tensors retained | Exact parameter elements retained |
+| --- | ---: | ---: | ---: | ---: |
+| Architecture-equivalent `nc=80` | 679 / 699 (97.14%) | 679 / 715 (94.97%) | 346 / 370 | 8,546,048 / 8,921,104 |
+| Five-class fine-tuning `nc=5` | 673 / 699 (96.28%) | 673 / 715 (94.13%) | 340 / 370 | 8,515,088 / 8,892,079 |
+
+For `nc=80`, the 36 target entries left fresh are exactly the two EMA modules (6 entries each) and two GhostConv
+modules (12 entries each). For `nc=5`, six final Detect class-logit tensors are additionally fresh because they change
+from 80 COCO classes to five dataset classes; the remaining 115 Detect tensors still transfer exactly.
+
+A baseline reconstructed by this checkout has 691 state entries rather than the released checkpoint's 699 legacy
+entries. The semantic map transfers 679 / 691 (98.26%) from that current baseline layout: the only twelve unmapped
+source entries are the two replaced baseline stride-2 Conv modules. Focused tests fill every source tensor with a
+distinct sentinel and prove both that every approved mapping is byte-identical after loading and that every unapproved
+target tensor remains at its fresh initialization.
 
 ## Structural summary
 

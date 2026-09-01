@@ -9,6 +9,34 @@ scales:
   # [depth, width, max_channels]
   s: [0.50, 0.50, 1024]
 
+# Exact source-to-target mapping for semantic initialization from the baseline YOLO12s graph.
+# Baseline Conv layers 15 and 18 are deliberately absent because GhostConv replaces their semantics.
+semantic_pretrained:
+  source_layers: 22
+  source_detect_from: [14, 17, 20]
+  target_detect_from: [15, 19, 22]
+  source_to_target_layer_map:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    16: 17
+    17: 18
+    19: 21
+    20: 22
+    21: 23
+
 backbone:
   # [from, repeats, module, args]
   - [-1, 1, Conv, [64, 3, 2]] # 0-P1/2

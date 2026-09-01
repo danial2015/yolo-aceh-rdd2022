@@ -315,7 +315,7 @@ class Model(torch.nn.Module):
         """Load parameters from the specified weights file into the model.
 
         This method supports loading weights from a file or directly from a weights object. It matches parameters by
-        name and shape and transfers them to the model.
+        name and shape, or uses a validated semantic mapping declared by the target model YAML.
 
         Args:
             weights (str | Path): Path to the weights file or a weights object.
@@ -335,7 +335,7 @@ class Model(torch.nn.Module):
         if isinstance(weights, (str, Path)):
             self.overrides["pretrained"] = weights  # remember the weights for DDP training
             weights, self.ckpt = load_checkpoint(weights)
-        self.model.load(weights)
+        self.pretrained_transfer_report = self.model.load(weights)
         return self
 
     def save(self, filename: str | Path = "saved_model.pt") -> None:

@@ -309,15 +309,117 @@ class BaseModel(torch.nn.Module):
             m.strides = fn(m.strides)
         return self
 
+    def _semantic_pretrained_state_dict(self, source_model, source_state):
+        """Build a source state dict with semantic layer indices remapped when the target YAML declares a mapping.
+
+        The mapping is activated only when the source graph matches the declared layer count, detection inputs, and
+        module types. This prevents a proposed architecture from accidentally applying its YOLO12 baseline mapping to
+        an already-proposed checkpoint or an unrelated model.
+
+        Args:
+            source_model (torch.nn.Module): Model that produced ``source_state``.
+            source_state (dict[str, torch.Tensor]): FP32 source state dictionary.
+
+        Returns:
+            (tuple[dict[str, torch.Tensor] | None, dict | None]): Remapped state dictionary and transfer report, or
+                ``(None, None)`` when semantic transfer does not apply.
+        """
+        spec = getattr(self, "yaml", {}).get("semantic_pretrained")
+        if not isinstance(spec, dict) or not isinstance(source_model, BaseModel):
+            return None, None
+
+        source_layers = source_model.model
+        target_layers = self.model
+        expected_layers = spec.get("source_layers")
+        source_detect_from = spec.get("source_detect_from")
+        target_detect_from = spec.get("target_detect_from")
+        layer_map = spec.get("source_to_target_layer_map")
+        if (
+            not isinstance(expected_layers, int)
+            or not isinstance(source_detect_from, list)
+            or not isinstance(layer_map, dict)
+        ):
+            raise ValueError(
+                "semantic_pretrained requires source_layers, source_detect_from, and source_to_target_layer_map."
+            )
+        if len(source_layers) != expected_layers or not isinstance(source_layers[-1], Detect):
+            return None, None
+        if list(source_layers[-1].f) != source_detect_from:
+            return None, None
+        if target_detect_from is not None and list(target_layers[-1].f) != target_detect_from:
+            raise ValueError("semantic_pretrained target_detect_from does not match the constructed model.")
+
+        try:
+            layer_map = {int(source): int(target) for source, target in layer_map.items()}
+        except (TypeError, ValueError) as e:
+            raise ValueError("semantic_pretrained layer indices must be integers.") from e
+        if not layer_map or len(set(layer_map.values())) != len(layer_map):
+            raise ValueError("semantic_pretrained source_to_target_layer_map must be non-empty and one-to-one.")
+        for source_index, target_index in layer_map.items():
+            if not 0 <= source_index < len(source_layers) or not 0 <= target_index < len(target_layers):
+                raise ValueError(f"semantic_pretrained layer mapping {source_index}->{target_index} is out of range.")
+            if type(source_layers[source_index]) is not type(target_layers[target_index]):
+                raise ValueError(
+                    "semantic_pretrained layer mapping "
+                    f"{source_index}->{target_index} requires matching module types, but got "
+                    f"{type(source_layers[source_index]).__name__}->{type(target_layers[target_index]).__name__}."
+                )
+
+        target_state = self.state_dict()
+        semantic_state = {}
+        exact_tensors = destination_missing = shape_mismatches = source_unmapped = 0
+        for source_key, source_value in source_state.items():
+            parts = source_key.split(".", 2)
+            if len(parts) != 3 or parts[0] != "model" or not parts[1].isdigit() or int(parts[1]) not in layer_map:
+                source_unmapped += 1
+                continue
+            target_key = f"model.{layer_map[int(parts[1])]}.{parts[2]}"
+            if target_key not in target_state:
+                destination_missing += 1
+                continue
+            semantic_state[target_key] = source_value
+            exact_tensors += source_value.shape == target_state[target_key].shape
+            shape_mismatches += source_value.shape != target_state[target_key].shape
+
+        target_mapped_layers = set(layer_map.values())
+        new_module_tensors = 0
+        for target_key in target_state:
+            parts = target_key.split(".", 2)
+            if (
+                len(parts) != 3
+                or parts[0] != "model"
+                or not parts[1].isdigit()
+                or int(parts[1]) not in target_mapped_layers
+            ):
+                new_module_tensors += 1
+        return semantic_state, {
+            "mode": "semantic",
+            "source_tensors": len(source_state),
+            "target_tensors": len(target_state),
+            "exact_tensors": exact_tensors,
+            "semantic_candidates": len(semantic_state),
+            "source_unmapped_tensors": source_unmapped,
+            "destination_missing_tensors": destination_missing,
+            "shape_mismatch_tensors": shape_mismatches,
+            "new_module_tensors": new_module_tensors,
+            "layer_map": layer_map,
+        }
+
     def load(self, weights, verbose=True):
         """Load weights into the model.
 
         Args:
             weights (dict | torch.nn.Module): The pre-trained weights to be loaded.
             verbose (bool, optional): Whether to log the transfer progress.
+
+        Returns:
+            (dict): Transfer report with semantic mapping details when declared by the target model YAML.
         """
         model = weights["model"] if isinstance(weights, dict) else weights  # torchvision models are not dicts
-        csd = model.float().state_dict()  # checkpoint state_dict as FP32
+        source_state = model.float().state_dict()  # checkpoint state_dict as FP32
+        csd, semantic_report = self._semantic_pretrained_state_dict(model, source_state)
+        if semantic_report is None:
+            csd = source_state
 
         # Remap classification head rows by class-name when nc differs (e.g. Obj365 -> COCO fine-tune)
         cls_remapped = self._remap_cls_by_names(csd, model, verbose=verbose)
@@ -335,8 +437,36 @@ class BaseModel(torch.nn.Module):
                 c1, c2 = min(c1, cc1), min(c2, cc2)
                 state_dict[first_conv][:c1, :c2] = csd[first_conv][:c1, :c2]
                 len_updated_csd += 1
+        target_parameters = dict(self.named_parameters())
+        transferred_parameter_keys = set(updated_csd).intersection(target_parameters)
+        transfer_report = semantic_report or {
+            "mode": "key_shape",
+            "source_tensors": len(source_state),
+            "target_tensors": len(self.model.state_dict()),
+        }
+        transfer_report.update(
+            {
+                "transferred_tensors": len_updated_csd,
+                "exact_transferred_tensors": len(updated_csd),
+                "class_remapped_tensors": cls_remapped,
+                "uninitialized_target_tensors": len(self.model.state_dict()) - len_updated_csd,
+                "exact_transferred_parameter_tensors": len(transferred_parameter_keys),
+                "exact_transferred_parameter_elements": sum(
+                    target_parameters[key].numel() for key in transferred_parameter_keys
+                ),
+            }
+        )
+        self.pretrained_transfer_report = transfer_report
+        if verbose and semantic_report:
+            LOGGER.info(
+                "Semantic pretrained transfer: "
+                f"{transfer_report['exact_transferred_tensors']}/{transfer_report['target_tensors']} exact tensors, "
+                f"{transfer_report['exact_transferred_parameter_elements']:,} trainable parameters retained, "
+                f"{transfer_report['new_module_tensors']} target tensors intentionally new."
+            )
         if verbose:
             LOGGER.info(f"Transferred {len_updated_csd}/{len(self.model.state_dict())} items from pretrained weights")
+        return transfer_report
 
     def _remap_cls_by_names(self, csd: dict[str, torch.Tensor], src_model: torch.nn.Module, verbose: bool = True):
         """Remap pretrained classification head rows to current class order by name.
