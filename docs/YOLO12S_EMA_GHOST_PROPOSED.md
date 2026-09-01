@@ -144,6 +144,17 @@ proposed YAML explicitly sets `scale: s`.
 this local environment because the optional `ultralytics-thop` package is not installed. The final column is a
 CPU `torch.profiler` estimate, included only as a structural reference rather than a benchmark.
 
+## Frozen research snapshot
+
+The architecture and pretrained-initialization policy are frozen at the annotated Git tag
+`research/yolo12s-ema-ghost-architecture-v1`, which resolves to commit
+`d199dd3bac9dd70875370ed3ba16a8a22da1a21b` on branch `feat/yolo12-ema-ghost` (2026-09-01).
+
+This immutable snapshot contains the direct EMA(P3/P4), selective GhostConv, declarative semantic map, and
+regression tests described above. Subsequent commits on the branch are limited to reproducible training artifacts
+and documentation; they must not modify the architecture or semantic transfer policy. The Kaggle runner clones this
+tag explicitly, rather than the moving branch tip, so each proposed-model training run records the same source.
+
 ## Files and Git
 
 The implementation is on branch `feat/yolo12-ema-ghost`, which tracks
