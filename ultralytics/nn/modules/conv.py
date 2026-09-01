@@ -9,6 +9,8 @@ import numpy as np
 import torch
 from torch import nn
 
+from ultralytics.utils.torch_utils import autocast
+
 __all__ = (
     "CBAM",
     "ChannelAttention",
@@ -18,6 +20,7 @@ __all__ = (
     "ConvTranspose",
     "DWConv",
     "DWConvTranspose2d",
+    "EMA",
     "Focus",
     "GhostConv",
     "Index",
@@ -349,6 +352,67 @@ class GhostConv(nn.Module):
         """
         y = self.cv1(x)
         return torch.cat((y, self.cv2(y)), 1)
+
+
+class EMA(nn.Module):
+    """Efficient Multi-scale Attention (EMA) that preserves the input feature shape.
+
+    The channel dimension is split into equal groups. Coordinate-aware gating and cross-spatial attention are then
+    computed independently for each group.
+    """
+
+    def __init__(self, channels, factor=32):
+        """Initialize EMA attention.
+
+        Args:
+            channels (int): Number of input and output channels.
+            factor (int): Number of channel groups.
+
+        Raises:
+            ValueError: If the channel count cannot be split into the requested number of groups.
+        """
+        super().__init__()
+        if factor <= 0 or channels < factor or channels % factor:
+            raise ValueError(
+                "EMA requires channels >= factor and channels divisible by factor, "
+                f"but got channels={channels}, factor={factor}."
+            )
+
+        self.factor = factor
+        self.channels_per_group = channels // factor
+        self.pool = nn.AdaptiveAvgPool2d(1)
+        self.conv1x1 = nn.Conv2d(self.channels_per_group, self.channels_per_group, 1, 1, 0)
+        self.conv3x3 = nn.Conv2d(self.channels_per_group, self.channels_per_group, 3, 1, 1)
+        self.gn = nn.GroupNorm(self.channels_per_group, self.channels_per_group)
+        self.softmax = nn.Softmax(dim=-1)
+
+    def forward(self, x):
+        """Apply direct grouped EMA attention while preserving ``(B, C, H, W)``.
+
+        Args:
+            x (torch.Tensor): Input feature map.
+
+        Returns:
+            (torch.Tensor): Attention-refined feature map with the input shape and dtype.
+        """
+        b, c, h, w = x.shape
+        group_x = x.reshape(b * self.factor, self.channels_per_group, h, w)
+        x_h = group_x.mean(dim=3, keepdim=True)
+        x_w = group_x.mean(dim=2, keepdim=True).transpose(2, 3)
+        hw = self.conv1x1(torch.cat((x_h, x_w), dim=2))
+        x_h, x_w = torch.split(hw, [h, w], dim=2)
+        x1 = self.gn(group_x * x_h.sigmoid() * x_w.transpose(2, 3).sigmoid())
+        x2 = self.conv3x3(group_x)
+
+        # Keep the affinity calculation in FP32 under AMP to avoid half-precision softmax/matmul overflow.
+        with autocast(enabled=False, device=x.device.type):
+            x1_score = self.softmax(self.pool(x1).reshape(b * self.factor, -1, 1).transpose(1, 2).float())
+            x2_score = self.softmax(self.pool(x2).reshape(b * self.factor, -1, 1).transpose(1, 2).float())
+            weights = (
+                x1_score @ x2.reshape(b * self.factor, self.channels_per_group, -1).float()
+                + x2_score @ x1.reshape(b * self.factor, self.channels_per_group, -1).float()
+            ).reshape(b * self.factor, 1, h, w)
+        return (group_x * weights.sigmoid().to(group_x.dtype)).reshape(b, c, h, w)
 
 
 class RepConv(nn.Module):
