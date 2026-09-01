@@ -109,8 +109,8 @@ CPU `torch.profiler` estimate, included only as a structural reference rather th
 
 ## Files and Git
 
-The implementation is on branch `feat/yolo12-ema-ghost` and is intended to be pushed to the configured `origin`
-repository after final review.
+The implementation is on branch `feat/yolo12-ema-ghost`, which tracks
+`origin/feat/yolo12-ema-ghost` in the configured repository.
 
 ## Remaining issues
 
