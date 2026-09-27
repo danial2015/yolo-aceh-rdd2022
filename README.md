@@ -1,3 +1,5 @@
+> **Research branch:** The final YOLO12s road-damage study registry, architecture sources, and reporting protocol are documented in [README_RESEARCH.md](README_RESEARCH.md). Historical experiment branches remain preserved.
+
 <div align="center">
   <p>
     <a href="https://www.ultralytics.com/events/yolovision?utm_source=github&utm_medium=social&utm_campaign=yolovision26&utm_content=banner" target="_blank">
