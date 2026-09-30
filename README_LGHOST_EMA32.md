@@ -15,6 +15,20 @@ This branch preserves the previous architectures and notebooks. It does not asse
 
 ## Research scope and attribution
 
+### L-Ghost-only ablation (without EMA attention)
+
+[yolo12s-lghost.yaml](ultralytics/cfg/models/12/yolo12s-lghost.yaml) adds the **YOLO12s + L-Ghost only** configuration.
+It uses the same small scale, two LGhostBottleneck blocks, G=4, RA=0.6 and semantic pretrained map.
+The two external EMA-32 layers are replaced by parameter-free `nn.Identity` passthroughs, preserving layer indices
+and detection inputs for a controlled ablation. There is no EMA attention in this graph. Ultralytics weight averaging
+(ModelEMA) remains a separate, standard training mechanism.
+
+Train it with `LGhostDetectionTrainer` and `pretrained="yolo12s.pt"`, just like the EMA-32 variant.
+The existing notebook still targets L-Ghost + EMA-32; to run this ablation, change its `MODEL_YAML` filename to
+`yolo12s-lghost.yaml` and use a distinct experiment name. No notebook is replaced by this configuration addition.
+
+### Paper reference
+
 Reference: Jing Chi, Shaohua Guo, Haopeng Zhang, and Yu Shan, **L-GhostNet: Extract Better Quality Features**,
 IEEE Access 11 (2023), 2361-2374. DOI: [10.1109/ACCESS.2023.3234108](https://doi.org/10.1109/ACCESS.2023.3234108).
 The implementation is an independent adaptation of sections III.A/III.C and Figure 3, not author-released code.

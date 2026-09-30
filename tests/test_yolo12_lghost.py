@@ -124,6 +124,33 @@ class TestLGhost(unittest.TestCase):
             with self.assertRaises(ValueError):
                 compact_lghost(m)
 
+    def test_lghost_only_ablation_and_checkpoint_transfer(self):
+        """Removing attention preserves graph/pretrained indices and restores all LG weights from its own checkpoint."""
+        cfg = ROOT / "ultralytics/cfg/models/12/yolo12s-lghost.yaml"
+        model = DetectionModel(cfg, nc=5, verbose=False).eval()
+        self.assertFalse(any(isinstance(m, EMA) for m in model.modules()))
+        self.assertIsInstance(model.model[15], torch.nn.Identity)
+        self.assertIsInstance(model.model[19], torch.nn.Identity)
+        self.assertEqual([i for i, m in enumerate(model.model) if isinstance(m, LGhostBottleneck)], [16, 20])
+        self.assertEqual(model.model[-1].f, [15, 19, 22])
+        with torch.no_grad():
+            self.assertEqual(model(torch.rand(1, 3, 64, 64))[0].shape, (1, 9, 84))
+        baseline_cfg = YAML.load(ROOT / "ultralytics/cfg/models/12/yolo12.yaml")
+        baseline_cfg["scale"] = "s"
+        baseline = DetectionModel(baseline_cfg, nc=80, verbose=False)
+        transfer = model.load(baseline, verbose=False)
+        self.assertEqual(transfer["mode"], "semantic")
+        self.assertEqual(transfer["exact_transferred_tensors"], 673)
+        for m in model.modules():
+            if isinstance(m, LearnedGroupConv):
+                m.prune_to_stage(2)
+        restored = DetectionModel(cfg, nc=5, verbose=False).eval()
+        report = restored.load(model, verbose=False)
+        self.assertEqual(report["mode"], "key_shape")
+        self.assertEqual(report["exact_transferred_tensors"], len(model.state_dict()))
+        for name, value in model.state_dict().items():
+            torch.testing.assert_close(restored.state_dict()[name], value)
+
     def test_flops_counts_dense_masked_convolution(self):
         """Count functional convolution once and retain dense cost even after pruning."""
         try:
