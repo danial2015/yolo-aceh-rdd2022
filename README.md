@@ -1,3 +1,8 @@
+> **Research branch:** YOLO12s + L-Ghost-inspired blocks + EMA-32. Start with
+> [README_LGHOST_EMA32.md](README_LGHOST_EMA32.md) and the
+> [Kaggle notebook](examples/kaggle_yolo12s_lghost_ema32_rdd2022.ipynb).
+> This is an experimental adaptation, not a full reproduction of L-GhostNet or a verified mAP improvement.
+
 <div align="center">
   <p>
     <a href="https://www.ultralytics.com/events/yolovision?utm_source=github&utm_medium=social&utm_campaign=yolovision26&utm_content=banner" target="_blank">

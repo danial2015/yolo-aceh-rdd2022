@@ -96,6 +96,7 @@ from .head import (
     YOLOESegment26,
     v10Detect,
 )
+from .lghost import LGhostBottleneck, LearnedGroupConv
 from .transformer import (
     AIFI,
     MLP,
@@ -166,6 +167,8 @@ __all__ = (
     "Index",
     "LRPCHead",
     "LayerNorm2d",
+    "LGhostBottleneck",
+    "LearnedGroupConv",
     "LightConv",
     "MLPBlock",
     "MSDeformAttn",
