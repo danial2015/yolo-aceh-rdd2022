@@ -542,6 +542,7 @@ def get_flops(model, imgsz=640):
     try:
         from ultralytics.nn.modules.block import AAttn, Attention  # imported here: block.py imports this module
         from ultralytics.nn.modules.head import RTDETRDecoder
+        from ultralytics.nn.modules.lghost import LearnedGroupConv, count_lghost
 
         model = unwrap_model(model)
         p = next(model.parameters())
@@ -552,7 +553,9 @@ def get_flops(model, imgsz=640):
         # Attention costs are quadratic in image area, so disable THOP's affine proxy.
         stride = None if attn else max(int(model.stride.max()), 32) if hasattr(model, "stride") else 32
         im = torch.empty((1, p.shape[1], *imgsz), device=p.device, dtype=p.dtype)  # input image in BCHW format
-        custom_ops = {Attention: _attention_ops, AAttn: _attention_ops} if attn else None
+        custom_ops = {Attention: _attention_ops, AAttn: _attention_ops} if attn else {}
+        if any(isinstance(m, LearnedGroupConv) for m in model.modules()):
+            custom_ops[LearnedGroupConv] = count_lghost
         if rtdetr:  # RT-DETR cannot run the stride-sized proxy input
             return thop.profile(model, inputs=[im], custom_ops=custom_ops, verbose=False)[0] / 1e9 * 2
         return thop.profile(model, inputs=[im], stride=stride, custom_ops=custom_ops, verbose=False)[0] / 1e9 * 2
