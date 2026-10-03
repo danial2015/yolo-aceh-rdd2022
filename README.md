@@ -1,4 +1,4 @@
-> **Katalog riset:** branch `research/yolo12s-model-catalog` mengumpulkan varian model,
+> **Katalog riset:** branch `research/yolo12s-model-catalog` memuat enam varian YOLO12s,
 > notebook, dan bukti evaluasi China–Aceh. Mulai dari [README_RESEARCH.md](README_RESEARCH.md).
 > Implementasi L-Ghost adalah adaptasi eksperimental, bukan reproduksi penuh L-GhostNet.
 

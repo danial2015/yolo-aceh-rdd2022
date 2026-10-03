@@ -1,27 +1,19 @@
 # Katalog riset deteksi kerusakan jalan
 
-Branch kerja: `research/yolo12s-model-catalog`. Branch ini mengumpulkan konfigurasi dan modul model historis dalam satu tempat, disertai notebook, hasil evaluasi ringan, dan jejak asal eksperimen. Branch sumber tetap dipertahankan; `main` tidak diubah. Dokumen ini adalah pintu masuk, bukan pengganti laporan analisis tiap dataset.
+Branch kerja: `research/yolo12s-model-catalog`. Folder `ultralytics/cfg/models/12/` pada branch ini sengaja berisi **hanya enam konfigurasi deteksi YOLO12s** yang dipakai dalam penelitian. Notebook, hasil evaluasi ringan, dan jejak asal eksperimen disertakan. Branch sumber tetap dipertahankan; `main` tidak diubah. Dokumen ini adalah pintu masuk, bukan pengganti laporan analisis tiap dataset.
 
 ## Peta model
 
 | Keluarga | Konfigurasi di branch ini | Status bukti hasil | Asal historis |
 |---|---|---|---|
-| YOLOv8s | `ultralytics/cfg/models/v8/yolov8.yaml` (`scale: s`) | Aceh | Ultralytics bawaan |
-| YOLO11s | `ultralytics/cfg/models/11/yolo11.yaml` (`scale: s`) | Aceh | Ultralytics bawaan |
 | YOLO12s asli | `ultralytics/cfg/models/12/yolo12.yaml` (`scale: s`) | China dan Aceh | Ultralytics bawaan |
 | EMA-32 | `ultralytics/cfg/models/12/yolo12-ema32.yaml` | China dan Aceh | `yolo12-ema32` (`419ee77`) |
 | GhostConv | `ultralytics/cfg/models/12/yolo12-ghost.yaml` | China dan Aceh | `yolo12-ghost-conv` (`57ea1b4`) |
 | Direct EMA + GhostConv | `ultralytics/cfg/models/12/yolo12s-ema-ghost.yaml` | China dan Aceh | tag riset `research/yolo12s-ema-ghost-architecture-v1` (`d199dd3`) |
 | L-Ghost | `ultralytics/cfg/models/12/yolo12s-lghost.yaml` | China dan Aceh; checkpoint Aceh belum tersedia lokal | `feat/yolo12s-lghost-ema32` (`14cbeb1`) |
 | L-Ghost + EMA-32 | `ultralytics/cfg/models/12/yolo12s-lghost-ema32.yaml` | China dan Aceh | `feat/yolo12s-lghost-ema32` (`14cbeb1`) |
-| ECA | `ultralytics/cfg/models/12/yolo12-eca.yaml` | Konfigurasi historis; belum ada evaluasi pada dua dataset di katalog | `yolo12-eca-net` (`8633245`) |
-| ECA-P3 | `ultralytics/cfg/models/12/yolo12-eca-p3.yaml` | Konfigurasi historis | `yolo12s-eca-p3` (`e1c1226`) |
-| Ghost + ECA | `ultralytics/cfg/models/12/yolo12-ghost-eca.yaml` | Konfigurasi historis | `yolo12-ghost-eca` (`4b13197`) |
-| Ghost + EMA; Ghost + EMA-32 | `ultralytics/cfg/models/12/yolo12-ghost-ema.yaml`, `yolo12-ghost-ema32.yaml` | Konfigurasi historis | `yolo12-ghost-ema` (`b0061e8`) |
-| SPD; SPD + EMA-32 | `ultralytics/cfg/models/12/yolo12-spd.yaml`, `yolo12-spd-ema32.yaml` | Konfigurasi historis | `yolo12-spd-ema32-continuity` (`3d7acd7`) |
-| BL-YOLOv8s | `ultralytics/cfg/models/v8/bl-yolov8s.yaml` | Konfigurasi historis | `yolo12-bl-replica` (`7e9ce52`) |
 
-Status **konfigurasi historis** berarti model dapat dibangun dari YAML di branch ini, bukan berarti telah dilatih ulang, tersedia checkpoint, atau terbukti unggul. Nama `EMAResidualAttention` dipakai pada konfigurasi SPD + EMA-32 untuk menghindari benturan dengan implementasi `EMAAttention` asli pada eksperimen EMA-32. Ini adaptasi kompatibilitas, bukan klaim reproduksi checkpoint SPD yang telah diverifikasi; untuk reproduksi persis, lihat commit sumbernya.
+Konfigurasi ECA, SPD, Ghost+ECA, Ghost+EMA, dan BL-YOLOv8s yang sempat digabungkan sebelumnya telah dikeluarkan dari branch ini karena **bukan bagian dari enam model penelitian**. Empat konfigurasi bawaan YOLO12 untuk klasifikasi, segmentasi, pose, dan OBB juga tidak disertakan di folder tersebut karena penelitian ini hanya memakai deteksi. Riwayat file-file itu tetap dapat dilihat pada commit terdahulu. YOLOv8s dan YOLO11s masih disebut dalam bukti Aceh semata sebagai **pembanding eksternal**, bukan varian model penelitian atau konfigurasi tambahan di folder YOLO12.
 
 ## Hasil yang bisa ditelusuri
 
