@@ -1,0 +1,49 @@
+# Ultralytics AGPL-3.0 License - https://ultralytics.com/license
+# BL-YOLOv8-S: reimplementation of the proposed method in Wang et al. (Sensors, 2023).
+# Components: SimSPPF (Conv-BN-ReLU), LSK-Attention, and normalized weighted BiFPN fusion.
+
+nc: 80 # number of classes
+scales:
+  # [depth, width, max_channels] -- same scale values as the official YOLOv8 configuration
+  n: [0.33, 0.25, 1024]
+  s: [0.33, 0.50, 1024]
+  m: [0.67, 0.75, 768]
+  l: [1.00, 1.00, 512]
+  x: [1.00, 1.25, 512]
+
+# YOLOv8 backbone from Table 1. SimSPPF and LSK-Attention replace the original final SPPF block.
+backbone:
+  # [from, repeats, module, args]
+  - [-1, 1, Conv, [64, 3, 2]] # 0-P1/2
+  - [-1, 1, Conv, [128, 3, 2]] # 1-P2/4
+  - [-1, 3, C2f, [128, True]] # 2
+  - [-1, 1, Conv, [256, 3, 2]] # 3-P3/8
+  - [-1, 6, C2f, [256, True]] # 4-P3/8
+  - [-1, 1, Conv, [512, 3, 2]] # 5-P4/16
+  - [-1, 6, C2f, [512, True]] # 6-P4/16
+  - [-1, 1, Conv, [1024, 3, 2]] # 7-P5/32
+  - [-1, 3, C2f, [1024, True]] # 8-P5/32
+  - [-1, 1, SimSPPF, [1024, 5]] # 9: proposed SimSPPF
+  - [-1, 1, LSKAttention, []] # 10: proposed LSK-Attention
+
+# Literal Table 1 weighted BiFPN neck, including the P2-to-P3 feature injection at layer 20.
+head:
+  - [4, 1, Conv, [256, 1, 1]] # 11: P3 lateral projection
+  - [6, 1, Conv, [256, 1, 1]] # 12: P4 lateral projection
+  - [10, 1, Conv, [256, 1, 1]] # 13: P5 lateral projection
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 14
+  - [[-1, 12], 1, BiFPNFusion, []] # 15: weighted P5->P4 fusion
+  - [-1, 3, C2f, [256]] # 16
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 17
+  - [[-1, 11], 1, BiFPNFusion, []] # 18: weighted P4->P3 fusion
+  - [-1, 3, C2f, [256]] # 19
+  - [2, 1, Conv, [256, 3, 2]] # 20: P2 injection to P3
+  - [[-1, 11, 19], 1, BiFPNFusion, []] # 21: weighted P3 fusion
+  - [-1, 3, C2f, [256]] # 22: P3/8 output
+  - [-1, 1, Conv, [256, 3, 2]] # 23
+  - [[-1, 12, 16], 1, BiFPNFusion, []] # 24: weighted P4 fusion
+  - [-1, 3, C2f, [256]] # 25: P4/16 output
+  - [-1, 1, Conv, [256, 3, 2]] # 26
+  - [[-1, 13], 1, BiFPNFusion, []] # 27: weighted P5 fusion
+  - [-1, 3, C2f, [256]] # 28: P5/32 output
+  - [[22, 25, 28], 1, Detect, [nc]] # 29: Detect(P3, P4, P5)

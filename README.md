@@ -1,7 +1,6 @@
-> **Research branch:** YOLO12s + L-Ghost-inspired blocks + EMA-32. Start with
-> [README_LGHOST_EMA32.md](README_LGHOST_EMA32.md) and the
-> [Kaggle notebook](examples/kaggle_yolo12s_lghost_ema32_rdd2022.ipynb).
-> This is an experimental adaptation, not a full reproduction of L-GhostNet or a verified mAP improvement.
+> **Katalog riset:** branch `research/yolo12s-model-catalog` mengumpulkan varian model,
+> notebook, dan bukti evaluasi China–Aceh. Mulai dari [README_RESEARCH.md](README_RESEARCH.md).
+> Implementasi L-Ghost adalah adaptasi eksperimental, bukan reproduksi penuh L-GhostNet.
 
 <div align="center">
   <p>

@@ -20,12 +20,16 @@ __all__ = (
     "ConvTranspose",
     "DWConv",
     "DWConvTranspose2d",
+    "ECAAttention",
     "EMA",
+    "EMAResidualAttention",
+    "EMAAttention",
     "Focus",
     "GhostConv",
     "Index",
     "LightConv",
     "RepConv",
+    "SPDConv",
     "SpatialAttention",
 )
 
@@ -148,6 +152,31 @@ class Conv2(Conv):
         self.conv.weight.data += w
         self.__delattr__("cv2")
         self.forward = self.forward_fuse
+
+
+class SPDConv(nn.Module):
+    """Space-to-depth convolution for information-preserving downsampling.
+
+    The space-to-depth operation reduces each spatial dimension by two while moving the corresponding pixels into the
+    channel dimension. A stride-one convolution then projects the expanded channels to the requested output channels.
+    """
+
+    def __init__(self, c1, c2, k=3, act=True):
+        """Initialize an SPD-Conv layer.
+
+        Args:
+            c1 (int): Number of input channels.
+            c2 (int): Number of output channels.
+            k (int): Convolution kernel size after the space-to-depth operation.
+            act (bool | nn.Module): Activation function.
+        """
+        super().__init__()
+        self.space_to_depth = nn.PixelUnshuffle(2)
+        self.conv = Conv(c1 * 4, c2, k, 1, act=act)
+
+    def forward(self, x):
+        """Apply space-to-depth followed by a stride-one convolution."""
+        return self.conv(self.space_to_depth(x))
 
 
 class LightConv(nn.Module):
@@ -415,6 +444,95 @@ class EMA(nn.Module):
         return (group_x * weights.sigmoid().to(group_x.dtype)).reshape(b, c, h, w)
 
 
+class EMAAttention(nn.Module):
+    """Efficient Multi-scale Attention (EMA) module with grouped cross-spatial learning.
+
+    EMA models directional and local spatial context independently within each channel group. It preserves the input
+    shape, making it suitable for refinement after a backbone stage.
+
+    Args:
+        c1 (int): Number of input and output channels.
+        factor (int, optional): Number of channel groups. Defaults to 32.
+    """
+
+    def __init__(self, c1: int, factor: int = 32) -> None:
+        """Initialize EMA attention with a fixed number of channel groups."""
+        super().__init__()
+        if c1 % factor:
+            raise ValueError(f"EMAAttention requires c1 ({c1}) to be divisible by factor ({factor}).")
+        self.groups = factor
+        channels_per_group = c1 // factor
+        self.pool = nn.AdaptiveAvgPool2d(1)
+        self.conv1x1 = nn.Conv2d(channels_per_group, channels_per_group, 1)
+        self.conv3x3 = nn.Conv2d(channels_per_group, channels_per_group, 3, padding=1)
+        self.gn = nn.GroupNorm(channels_per_group, channels_per_group)
+        self.softmax = nn.Softmax(dim=-1)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply grouped multi-scale attention and return a tensor with the input shape."""
+        batch, channels, height, width = x.shape
+        group_x = x.reshape(batch * self.groups, channels // self.groups, height, width)
+        x_h = group_x.mean(dim=3, keepdim=True)
+        x_w = group_x.mean(dim=2, keepdim=True).transpose(2, 3)
+        hw = self.conv1x1(torch.cat((x_h, x_w), dim=2))
+        x_h, x_w = torch.split(hw, [height, width], dim=2)
+        x1 = self.gn(group_x * x_h.sigmoid() * x_w.transpose(2, 3).sigmoid())
+        x2 = self.conv3x3(group_x)
+        x1_score = self.softmax(self.pool(x1).reshape(batch * self.groups, -1, 1).transpose(1, 2))
+        x2_score = self.softmax(self.pool(x2).reshape(batch * self.groups, -1, 1).transpose(1, 2))
+        x1_features = x1.reshape(batch * self.groups, channels // self.groups, -1)
+        x2_features = x2.reshape(batch * self.groups, channels // self.groups, -1)
+        weights = (x1_score @ x2_features + x2_score @ x1_features).reshape(batch * self.groups, 1, height, width)
+        return (group_x * weights.sigmoid()).reshape(batch, channels, height, width)
+
+
+class EMAResidualAttention(nn.Module):
+    """Efficient Multi-scale Attention with grouped cross-spatial learning.
+
+    Args:
+        c1 (int): Number of input and output channels.
+        factor (int): Number of channel groups. Defaults to 32.
+    """
+
+    def __init__(self, c1: int, factor: int = 32, residual_scale: float = 1e-3) -> None:
+        """Initialize EMA attention as a near-identity residual adapter.
+
+        Args:
+            c1 (int): Number of input and output channels.
+            factor (int): Number of channel groups.
+            residual_scale (float): Initial interpolation from the input to the attended feature.
+        """
+        super().__init__()
+        if c1 % factor:
+            raise ValueError(f"EMAResidualAttention requires c1 ({c1}) to be divisible by factor ({factor}).")
+        self.groups = factor
+        channels_per_group = c1 // factor
+        self.pool = nn.AdaptiveAvgPool2d(1)
+        self.conv1x1 = nn.Conv2d(channels_per_group, channels_per_group, 1)
+        self.conv3x3 = nn.Conv2d(channels_per_group, channels_per_group, 3, padding=1)
+        self.gn = nn.GroupNorm(channels_per_group, channels_per_group)
+        self.softmax = nn.Softmax(dim=-1)
+        self.residual_scale = nn.Parameter(torch.tensor(residual_scale))
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply grouped multi-scale attention while preserving the input shape."""
+        batch, channels, height, width = x.shape
+        group_x = x.reshape(batch * self.groups, channels // self.groups, height, width)
+        x_h = group_x.mean(dim=3, keepdim=True)
+        x_w = group_x.mean(dim=2, keepdim=True).transpose(2, 3)
+        hw = self.conv1x1(torch.cat((x_h, x_w), dim=2))
+        x_h, x_w = torch.split(hw, [height, width], dim=2)
+        x1 = self.gn(group_x * x_h.sigmoid() * x_w.transpose(2, 3).sigmoid())
+        x2 = self.conv3x3(group_x)
+        x1_score = self.softmax(self.pool(x1).reshape(batch * self.groups, -1, 1).transpose(1, 2))
+        x2_score = self.softmax(self.pool(x2).reshape(batch * self.groups, -1, 1).transpose(1, 2))
+        x1_features = x1.reshape(batch * self.groups, channels // self.groups, -1)
+        x2_features = x2.reshape(batch * self.groups, channels // self.groups, -1)
+        weights = (x1_score @ x2_features + x2_score @ x1_features).reshape(batch * self.groups, 1, height, width)
+        attended = (group_x * weights.sigmoid()).reshape(batch, channels, height, width)
+        return x + self.residual_scale * (attended - x)
+
+
 class RepConv(nn.Module):
     """RepConv module with training and deploy modes.
 
@@ -609,6 +727,41 @@ class ChannelAttention(nn.Module):
             (torch.Tensor): Channel-attended output tensor.
         """
         return x * self.act(self.fc(self.pool(x)))
+
+
+class ECAAttention(nn.Module):
+    """Efficient Channel Attention (ECA) module for lightweight channel recalibration.
+
+    The 1D convolution kernel is selected from the input channel count as proposed in ECA-Net, avoiding the channel
+    reduction used by squeeze-and-excitation attention.
+
+    Args:
+        c1 (int): Number of input channels.
+        gamma (int, optional): Kernel-size scaling factor. Defaults to 2.
+        b (int, optional): Kernel-size offset. Defaults to 1.
+    """
+
+    def __init__(self, c1: int, gamma: int = 2, b: int = 1) -> None:
+        """Initialize ECA attention with an odd, channel-adaptive kernel."""
+        super().__init__()
+        t = int(abs((math.log2(c1) + b) / gamma))
+        k = max(t if t % 2 else t + 1, 1)
+        self.avg_pool = nn.AdaptiveAvgPool2d(1)
+        self.conv = nn.Conv1d(1, 1, kernel_size=k, padding=k // 2, bias=False)
+        self.act = nn.Sigmoid()
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply channel attention to input tensor.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (batch, channels, height, width).
+
+        Returns:
+            (torch.Tensor): Channel-attended tensor with the same shape as the input.
+        """
+        y = self.avg_pool(x).squeeze(-1).transpose(-1, -2)
+        y = self.conv(y).transpose(-1, -2).unsqueeze(-1)
+        return x * self.act(y)
 
 
 class SpatialAttention(nn.Module):

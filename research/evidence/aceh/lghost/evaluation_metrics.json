@@ -1,0 +1,17 @@
+{
+  "provenance": "Output evaluasi notebook yolo12s-l-ghost-aceh-road-damage-detection-202.ipynb; ZIP/checkpoint belum tersedia lokal",
+  "source_notebook_sha256": "05BF5EF5FDE66F461138845E6EE670A92155C90CE6FDACE71AD60268D76280EC",
+  "validation": {
+    "precision": 0.7297565420266358,
+    "recall": 0.6149045758789309,
+    "map50": 0.7145673248606095,
+    "map50_95": 0.46022251901007155
+  },
+  "test": {
+    "precision": 0.7377306643360014,
+    "recall": 0.6608577216168507,
+    "map50": 0.7648883656996919,
+    "map50_95": 0.49934391279127543
+  },
+  "best_lg_pruning_stages": [1, 1]
+}

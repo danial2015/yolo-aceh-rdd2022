@@ -1,0 +1,16 @@
+{
+  "validation": {
+    "precision": 0.8724619241615041,
+    "recall": 0.8237451829882962,
+    "map50": 0.8839530490250859,
+    "map50_95": 0.5989787836697987,
+    "save_dir": "/kaggle/working/runs/yolo12s_ghost_ch_rdd2022_pretrained_val"
+  },
+  "test": {
+    "precision": 0.8454248490465067,
+    "recall": 0.8229009210952146,
+    "map50": 0.8517382781359917,
+    "map50_95": 0.5671567096281506,
+    "save_dir": "/kaggle/working/runs/yolo12s_ghost_ch_rdd2022_pretrained_test"
+  }
+}

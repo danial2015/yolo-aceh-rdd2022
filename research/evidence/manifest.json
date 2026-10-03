@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "source_root": "E:/Hasil",
+  "note": "Notebook di branch ini berisi kode tanpa output. Hash sumber merujuk notebook asli; hash checkpoint merujuk best.pt pada folder hasil lokal. Berkas checkpoint/ZIP tidak disalin ke Git.",
+  "runs": [
+    {
+      "id": "china/baseline",
+      "source_notebook": "rdd2022-china-result/fork-of-yolo12-original-test-v-1-0 (2).ipynb",
+      "source_notebook_sha256": "e1788cc0a2403a17a51725c0a958ad4523a004cba87b1413f3149343b1d24d5d",
+      "source_result_folder": "rdd2022-china-result/fork-of-yolo12-original-test-v-1-0 (2)",
+      "repository_notebook": "research/notebooks/china/baseline.ipynb",
+      "repository_evidence": "research/evidence/china/baseline/",
+      "checkpoint_sha256": "f4fed30ca46bd7e28336f997829728abf6073313e7da849d088ef88b0f5b1c58",
+      "checkpoint_bytes": 18949274,
+      "source_metrics_sha256": "49876a800405d5c6b86bd803196987e27ee0a11667dfddf2ed2f213b9342a8a8",
+      "best_pruning_stage": null
+    },
+    {
+      "id": "china/ema32",
+      "source_notebook": "rdd2022-china-result/yolo12-ema32-ch (2).ipynb",
+      "source_notebook_sha256": "f4ba5130eccf7bbf6a2c19b071ec387a1691509f8d1e38149fd1001e33df48cb",
+      "source_result_folder": "rdd2022-china-result/yolo12-ema32-ch (2)",
+      "repository_notebook": "research/notebooks/china/ema32.ipynb",
+      "repository_evidence": "research/evidence/china/ema32/",
+      "checkpoint_sha256": "c5474aeb1ae8b44200fcad9ecb775ed9bbf555dec9f9da5d4ff6db2fb8a5d261",
+      "checkpoint_bytes": 18954108,
+      "source_metrics_sha256": "ef4e5d226c384c4ab2300ad359a5ad40ebcaa10e364177ecca7e1abb4cab4bf8",
+      "best_pruning_stage": null
+    },
+    {
+      "id": "china/ghostconv",
+      "source_notebook": "rdd2022-china-result/yolo12-ghost-conv-v1.ipynb",
+      "source_notebook_sha256": "d2113fd48e9645fb478386e05beca46189a75cbf3d0dcb63e600cdf5df2be9ff",
+      "source_result_folder": "rdd2022-china-result/yolo12-ghost-conv-v1",
+      "repository_notebook": "research/notebooks/china/ghostconv.ipynb",
+      "repository_evidence": "research/evidence/china/ghostconv/",
+      "checkpoint_sha256": "004cfd7cbbc53fc59ab61088a1259d5b711e4225fdfbbf8bd6562a41a9732ea2",
+      "checkpoint_bytes": 17203678,
+      "source_metrics_sha256": "cc7e90bd1bd281ed8ea5061f624d747c396319896dcdfd622a91157961bc7a97",
+      "best_pruning_stage": null
+    },
+    {
+      "id": "china/direct-ema-ghost",
+      "source_notebook": "rdd2022-china-result/yolo12-ghost-ema-v4 (2).ipynb",
+      "source_notebook_sha256": "408732513d9a84c06276b8f2e77e1a88439bd4e805afec4128b00db80e9a3162",
+      "source_result_folder": "rdd2022-china-result/yolo12-ghost-ema-v4 (2)",
+      "repository_notebook": "research/notebooks/china/direct-ema-ghost.ipynb",
+      "repository_evidence": "research/evidence/china/direct-ema-ghost/",
+      "checkpoint_sha256": "5262c4a6c3e0f050347c0b104c4a9aed3c52817adbf695a0d474a7b1a9048bc0",
+      "checkpoint_bytes": 18235490,
+      "source_metrics_sha256": "bf8cfe46c2286d901abff975480e7baec94ff11167f04fd44ea662970c9eab1b",
+      "best_pruning_stage": null
+    },
+    {
+      "id": "china/lghost",
+      "source_notebook": "rdd2022-china-result/yolo12-lghost.ipynb",
+      "source_notebook_sha256": "cea5f7e6e7815ccf116ab6571207adde09b633e7e5ea4124669f3861fea22ce4",
+      "source_result_folder": "rdd2022-china-result/yolo12-lghost",
+      "repository_notebook": "research/notebooks/china/lghost.ipynb",
+      "repository_evidence": "research/evidence/china/lghost/",
+      "checkpoint_sha256": "3a44d05cadfc12ad359342f4ae7df50cda462b24875a5eccb70dbb94d137e72c",
+      "checkpoint_bytes": 17948506,
+      "source_metrics_sha256": "f1723103de6195b9c346fb832e840f64844d403c2989f52b44d34da9f3901cb0",
+      "best_pruning_stage": [
+        3,
+        3
+      ]
+    },
+    {
+      "id": "china/lghost-ema32",
+      "source_notebook": "rdd2022-china-result/yolo12-lghostema.ipynb",
+      "source_notebook_sha256": "2148c6e234e3e0db43ed404ed06025521c2c030edd8db5bef6b368a3b5c2ad44",
+      "source_result_folder": "rdd2022-china-result/yolo12-lghostema",
+      "repository_notebook": "research/notebooks/china/lghost-ema32.ipynb",
+      "repository_evidence": "research/evidence/china/lghost-ema32/",
+      "checkpoint_sha256": "560e680d2003bd65a8e4c66da62d6d338313ec6fa7e5c82d6aa444d00d3e64b2",
+      "checkpoint_bytes": 17956254,
+      "source_metrics_sha256": "3c015bb14fe8d5cf287ff8ff89fbef97ae1baf5bcc48fce0f92bb9876a90c32c",
+      "best_pruning_stage": [
+        3,
+        3
+      ]
+    },
+    {
+      "id": "aceh/yolov8s",
+      "source_notebook": "ard-26-result/fork-of-aceh-ardd-yolo8.ipynb",
+      "source_notebook_sha256": "92ab97ffa88a861d0fd70c37d7b5e1dbb6f07e56725b831ef69fec20d987cdfb",
+      "source_result_folder": "ard-26-result/fork-of-aceh-ardd-yolo8",
+      "repository_notebook": "research/notebooks/aceh/yolov8s.ipynb",
+      "repository_evidence": "research/evidence/aceh/yolov8s/",
+      "checkpoint_sha256": "cb389c8bc0920376f02b72515886fc0f4b33bc5cbdc0546781cf01d1c8b7f42a",
+      "checkpoint_bytes": 22511082,
+      "source_metrics_sha256": "be615bda4c2f45939ed843941bb68c4b777ea974ca2f624191ae30ebb61154d3",
+      "best_pruning_stage": null
+    },
+    {
+      "id": "aceh/yolo11s",
+      "source_notebook": "ard-26-result/fork-of-aceh-ardd-yolo11.ipynb",
+      "source_notebook_sha256": "7cb260b3bce296768859af5f83a7a5b110ad7b7f01d442d300c913065ab2caa4",
+      "source_result_folder": "ard-26-result/fork-of-aceh-ardd-yolo11",
+      "repository_notebook": "research/notebooks/aceh/yolo11s.ipynb",
+      "repository_evidence": "research/evidence/aceh/yolo11s/",
+      "checkpoint_sha256": "a01867e8d5a0b697914feea85a8de9b5c5ed9bf7e9f184ef219006b7828274d4",
+      "checkpoint_bytes": 19169818,
+      "source_metrics_sha256": "e2a8b93439fcb2613acef0d7f863730722ddd8b9d24fdd2015030268ccae86e0",
+      "best_pruning_stage": null
+    },
+    {
+      "id": "aceh/baseline",
+      "source_notebook": "ard-26-result/aceh-ardd-yolo12-baseline (1).ipynb",
+      "source_notebook_sha256": "041497ac45989ee40e7844b0a8823c19174026dd864727315d1324fdeb7a88c5",
+      "source_result_folder": "ard-26-result/aceh-ardd-yolo12-baseline (1)",
+      "repository_notebook": "research/notebooks/aceh/baseline.ipynb",
+      "repository_evidence": "research/evidence/aceh/baseline/",
+      "checkpoint_sha256": "d56fcfe710247185c3c8a98c08f2819b76e46137d1e13edd806ce06bccce8382",
+      "checkpoint_bytes": 18924698,
+      "source_metrics_sha256": "615347b4aa0a6e41f31df3a1857d1525da936d46fb835745f0a8644d9ee3b24f",
+      "best_pruning_stage": null
+    },
+    {
+      "id": "aceh/ema32",
+      "source_notebook": "ard-26-result/fork-of-aceh-ardd-yolo12s-ema32 (1).ipynb",
+      "source_notebook_sha256": "0eb8dacd99667cc31ad52da25d77b786626832c1b41d88b68dc8a1dc7e855379",
+      "source_result_folder": "ard-26-result/fork-of-aceh-ardd-yolo12s-ema32 (1)",
+      "repository_notebook": "research/notebooks/aceh/ema32.ipynb",
+      "repository_evidence": "research/evidence/aceh/ema32/",
+      "checkpoint_sha256": "8004a1d6f99fc60a40e58215843bd09c48761dc2af8d32e0ee0f4021daf33199",
+      "checkpoint_bytes": 18929532,
+      "source_metrics_sha256": "010f257454ae6fcaa3d3ff23e78e3e07f50ec594f71b94329f005d49ca07e48a",
+      "best_pruning_stage": null
+    },
+    {
+      "id": "aceh/ghostconv",
+      "source_notebook": "ard-26-result/fork-of-aceh-ardd-yolo12s-ghost (1).ipynb",
+      "source_notebook_sha256": "79dd70cc3a5a20549db1445903e15299d588a59d940d6ea5f7aa8018901329aa",
+      "source_result_folder": "ard-26-result/fork-of-aceh-ardd-yolo12s-ghost (1)",
+      "repository_notebook": "research/notebooks/aceh/ghostconv.ipynb",
+      "repository_evidence": "research/evidence/aceh/ghostconv/",
+      "checkpoint_sha256": "09bdc2badd0870956996f4503ff1b2a8a8b74e23f4aed5458ef2f19a623bd385",
+      "checkpoint_bytes": 17179102,
+      "source_metrics_sha256": "e23229d08629e0d5b03034e7844fb34e0e52f950b94c0dbd4c3ef7e5cff76fd9",
+      "best_pruning_stage": null
+    },
+    {
+      "id": "aceh/direct-ema-ghost",
+      "source_notebook": "ard-26-result/aceh-ardd-yolo12-proposed.ipynb",
+      "source_notebook_sha256": "bccbed5c9d86f279c1bd50f09da66f791acdc8ac131ca3356f6c9109193d0fe2",
+      "source_result_folder": "ard-26-result/aceh-ardd-yolo12-proposed",
+      "repository_notebook": "research/notebooks/aceh/direct-ema-ghost.ipynb",
+      "repository_evidence": "research/evidence/aceh/direct-ema-ghost/",
+      "checkpoint_sha256": "c909e60434ca53b1865c01cc30e36c122e5191b9ead0ba28029713b64b3a7370",
+      "checkpoint_bytes": 18210914,
+      "source_metrics_sha256": "3e5479b45a091d840c6dab5e1f46707798a81ce89c1f09af9ce68fc15502415f",
+      "best_pruning_stage": null
+    },
+    {
+      "id": "aceh/lghost",
+      "source_notebook": "rdd2022-china-result/yolo12s-l-ghost-aceh-road-damage-detection-202.ipynb",
+      "source_notebook_sha256": "05bf5ef5fde66f461138845e6ee670a92155c90ce6fdace71ad60268d76280ec",
+      "source_result_folder": null,
+      "repository_notebook": "research/notebooks/aceh/lghost.ipynb",
+      "repository_evidence": "research/evidence/aceh/lghost/",
+      "checkpoint_sha256": null,
+      "checkpoint_bytes": null,
+      "source_metrics_sha256": null,
+      "best_pruning_stage": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "aceh/lghost-ema32",
+      "source_notebook": "ard-26-result/yolo12s-l-ghost-ema-32-aceh-road-damage-dete.ipynb",
+      "source_notebook_sha256": "2970aee32cf6c8e6b024b2371583ab58676055114328c13017f3865f6ef5b493",
+      "source_result_folder": "ard-26-result/yolo12s-l-ghost-ema-32-aceh-road-damage-dete",
+      "repository_notebook": "research/notebooks/aceh/lghost-ema32.ipynb",
+      "repository_evidence": "research/evidence/aceh/lghost-ema32/",
+      "checkpoint_sha256": "689789dc89b16fd03938ae89999354c3b6747a6ffd6b7cf34e16648b18b8267d",
+      "checkpoint_bytes": 17931614,
+      "source_metrics_sha256": "22d0326ad553791c5014f95a7362b269039e5a36d320ccb92af141684da07234",
+      "best_pruning_stage": [
+        2,
+        2
+      ]
+    }
+  ]
+}

@@ -27,10 +27,12 @@ from ultralytics.nn.modules import (
     SPP,
     SPPELAN,
     SPPF,
+    SimSPPF,
     A2C2f,
     AConv,
     ADown,
     Bottleneck,
+    BiFPNFusion,
     BottleneckCSP,
     C2f,
     C2fAttn,
@@ -50,7 +52,10 @@ from ultralytics.nn.modules import (
     Detect,
     DWConv,
     DWConvTranspose2d,
+    ECAAttention,
     EMA,
+    EMAAttention,
+    EMAResidualAttention,
     Focus,
     GhostBottleneck,
     GhostConv,
@@ -59,6 +64,7 @@ from ultralytics.nn.modules import (
     ImagePoolingAttn,
     Index,
     LGhostBottleneck,
+    LSKAttention,
     LRPCHead,
     Pose,
     Pose26,
@@ -69,6 +75,7 @@ from ultralytics.nn.modules import (
     ResNetLayer,
     RTDETRDecoder,
     SCDown,
+    SPDConv,
     Segment,
     Segment26,
     SemanticSegment,
@@ -2130,6 +2137,8 @@ def parse_model(d, ch, verbose=True):
             GhostBottleneck,
             SPP,
             SPPF,
+            SimSPPF,
+            SPDConv,
             C2fPSA,
             C2PSA,
             DWConv,
@@ -2223,7 +2232,7 @@ def parse_model(d, ch, verbose=True):
                 legacy = False
         elif m is AIFI:
             args = [ch[f], *args]
-        elif m is EMA:
+        elif m in frozenset({EMA, EMAAttention, EMAResidualAttention, ECAAttention, LSKAttention}):
             c2 = ch[f]
             args = [c2, *args]
         elif m in frozenset({HGStem, HGBlock}):
@@ -2236,6 +2245,14 @@ def parse_model(d, ch, verbose=True):
             c2 = args[1] if args[3] else args[1] * 4
         elif m is torch.nn.BatchNorm2d:
             args = [ch[f]]
+        elif m is BiFPNFusion:
+            if not isinstance(f, list):
+                raise TypeError(f"BiFPNFusion layer {i} requires a list of input layer indices.")
+            input_channels = [ch[x] for x in f]
+            if len(set(input_channels)) != 1:
+                raise ValueError(f"BiFPNFusion layer {i} requires equal input channels, but received {input_channels}.")
+            c2 = input_channels[0]
+            args = [len(f), *args]
         elif m is Concat:
             c2 = sum(ch[x] for x in f)
         elif m in frozenset(
