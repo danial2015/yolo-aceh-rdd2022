@@ -1,0 +1,17 @@
+{
+  "seed": 456,
+  "validation": {
+    "precision": 0.8641151497097891,
+    "recall": 0.8453532603385281,
+    "map50": 0.896010531790514,
+    "map50_95": 0.6062902891954486,
+    "save_dir": "/kaggle/working/runs/yolo12s_original_pretrained_ch_rdd2022_seed456_val"
+  },
+  "test": {
+    "precision": 0.846682341468966,
+    "recall": 0.8282542370436003,
+    "map50": 0.8531291128063291,
+    "map50_95": 0.5787396308351234,
+    "save_dir": "/kaggle/working/runs/yolo12s_original_pretrained_ch_rdd2022_seed456_test"
+  }
+}

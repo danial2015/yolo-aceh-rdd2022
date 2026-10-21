@@ -1,0 +1,3 @@
+repository=https://github.com/danial2015/yolo-aceh-rdd2022.git
+tag=research/yolo12s-ema-ghost-architecture-v1
+commit=d199dd3bac9dd70875370ed3ba16a8a22da1a21b

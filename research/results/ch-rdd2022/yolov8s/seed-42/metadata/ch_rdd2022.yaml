@@ -1,0 +1,12 @@
+path: /kaggle/input/datasets/danialalfayyadh/ch-rdd-2022/datasets-china-split-fix
+train: train/images
+val: val/images
+test: test/images
+
+nc: 5
+names:
+  0: D00
+  1: D10
+  2: D20
+  3: D40
+  4: Repair

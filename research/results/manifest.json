@@ -1,0 +1,1507 @@
+[
+  {
+    "path": "ardd26/notebook-evidence/ard26-yolo12s-baseline-multiseed.ipynb",
+    "bytes": 241405,
+    "sha256": "7d72bffa841b788e951ee4e7f534d7361e77d2ce38a26a43dd6014524536a921"
+  },
+  {
+    "path": "ardd26/notebook-evidence/ard26-yolo12s-lghost-ema32-multiseed_part1.ipynb",
+    "bytes": 147842,
+    "sha256": "4bcf95821d399c8b62b50d364f532cd39467403b35858511a8ec0402d9b7be43"
+  },
+  {
+    "path": "ardd26/notebook-evidence/ard26-yolo12s-lghost-ema32-sesi2-s456-akun2.ipynb",
+    "bytes": 150520,
+    "sha256": "cecdebb4dbf9045d02bd3e4c2524b2f11c6c0e3eab56d63c2384587599f56e74"
+  },
+  {
+    "path": "ardd26/yolo11s/seed-42/evaluation_metrics.json",
+    "bytes": 811,
+    "sha256": "e2a8b93439fcb2613acef0d7f863730722ddd8b9d24fdd2015030268ccae86e0"
+  },
+  {
+    "path": "ardd26/yolo11s/seed-42/metadata/ardd26_4class.yaml",
+    "bytes": 170,
+    "sha256": "ebcd9cb28589e4e839b537e6f5c2e90201fb337acd048846db26bf3090f179de"
+  },
+  {
+    "path": "ardd26/yolo11s/seed-42/metadata/yolo12s_original_pretrained_ardd26_config.json",
+    "bytes": 1133,
+    "sha256": "ed2f42408471a90d3316bb77669993991fad7f50975a5b016602c88037a6d374"
+  },
+  {
+    "path": "ardd26/yolo11s/seed-42/test/BoxPR_curve.png",
+    "bytes": 164114,
+    "sha256": "427317597d2f02dd42decdeadf38daced7a68e649ed3303b18fdf6a2ff1bbef4"
+  },
+  {
+    "path": "ardd26/yolo11s/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 144045,
+    "sha256": "f5093f1c44dc8c45bbad4e001b9d91fc23b264923c8a6d1520e64790b9ce4098"
+  },
+  {
+    "path": "ardd26/yolo11s/seed-42/train/args.yaml",
+    "bytes": 1740,
+    "sha256": "7ce86ac465baa96c33d609501b047491dadd6583fa3ed6d9cb4f91a967cdd37a"
+  },
+  {
+    "path": "ardd26/yolo11s/seed-42/train/BoxPR_curve.png",
+    "bytes": 173441,
+    "sha256": "2384e2eee33410488a2e7395ebb8487b13bbb9009510a39559817efd43c4c7bf"
+  },
+  {
+    "path": "ardd26/yolo11s/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 143391,
+    "sha256": "c66250034ee7b54ca9f89b7f143b4755e025524ae53d7330f017c206c2bfe8a5"
+  },
+  {
+    "path": "ardd26/yolo11s/seed-42/train/results.csv",
+    "bytes": 19692,
+    "sha256": "2046e440bee11c604e50641f8defd81e004e70b189812bb121d64a5b138c366d"
+  },
+  {
+    "path": "ardd26/yolo11s/seed-42/train/results.png",
+    "bytes": 277809,
+    "sha256": "b9a65af7f5b15e52fec8bea9068305d81668e8417d356395d3cdb7b6f5850450"
+  },
+  {
+    "path": "ardd26/yolo11s/seed-42/validation/BoxPR_curve.png",
+    "bytes": 172362,
+    "sha256": "15091f77b929ad6d409ee4ac9da420be602225d92162b9fa7e72511efa7642fb"
+  },
+  {
+    "path": "ardd26/yolo11s/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 142258,
+    "sha256": "a6eaba6ccd80d9ae3360fd68701e96161f073f6b1fc4bcd63721686e946a88c0"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-123/evaluation_metrics.json",
+    "bytes": 875,
+    "sha256": "a36b29d94a9a2739ddd76decaf79381a9e42e6fcf51fc47071bc1eb7723bdc22"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-42/evaluation_metrics.json",
+    "bytes": 809,
+    "sha256": "615347b4aa0a6e41f31df3a1857d1525da936d46fb835745f0a8644d9ee3b24f"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-42/metadata/ardd26_4class.yaml",
+    "bytes": 170,
+    "sha256": "ebcd9cb28589e4e839b537e6f5c2e90201fb337acd048846db26bf3090f179de"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-42/metadata/yolo12s_original_pretrained_ardd26_config.json",
+    "bytes": 1133,
+    "sha256": "ed2f42408471a90d3316bb77669993991fad7f50975a5b016602c88037a6d374"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-42/test/BoxPR_curve.png",
+    "bytes": 170454,
+    "sha256": "e21794d2b3f0496a1c072bb748fe4ed6aea473d0e9921c70267b0e5c37fef0e0"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 143727,
+    "sha256": "bb088eba1bce957e3fc4c31e0806c48d9ed96a739716d525e74eb1f3c1c6f8c5"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-42/train/args.yaml",
+    "bytes": 1740,
+    "sha256": "d35814da249fe34b0bb3d5543591f2aa346aa74f920d4caffc9aa74f2a340ca9"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-42/train/BoxPR_curve.png",
+    "bytes": 175913,
+    "sha256": "330b42855278e984cc595c1f0a9f9ff351763f97cb2f6f205c45483c266d7c55"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 142566,
+    "sha256": "4cbaff8303296d5199a6c9606f79a91057c4e7279284553771e50dc242dcbbbe"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-42/train/results.csv",
+    "bytes": 19693,
+    "sha256": "b7fa9040decc7f9561a90e76d04d0998b2afd043bb05f725372616d7737fa962"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-42/train/results.png",
+    "bytes": 283892,
+    "sha256": "b7a442fdf607e0896db875cbcdfa52c8263f5ac220de7fa8bc073cc593482e03"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-42/validation/BoxPR_curve.png",
+    "bytes": 176743,
+    "sha256": "7bd96b08559c599e40b8b9832fcd3cd606eb4da5af2b079bd724a29ebb85e1d1"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 143290,
+    "sha256": "4f550b5b1e1b54734bf442556f04d61126799695c52b2e26f486f28d35d1a4bb"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-456/evaluation_metrics.json",
+    "bytes": 844,
+    "sha256": "dddada03b07ac9bf6c59f83479862a8684b877d33c71f9bb405a02c7f59a2705"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-456/metadata/ardd26_4class.yaml",
+    "bytes": 170,
+    "sha256": "ebcd9cb28589e4e839b537e6f5c2e90201fb337acd048846db26bf3090f179de"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-456/metadata/yolo12s_original_pretrained_ardd26_seed456_config.json",
+    "bytes": 1193,
+    "sha256": "349cbb379131acddb4fb9981017e2e9dc21cce77870f8c547030d9e9fee7907d"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-456/test/BoxPR_curve.png",
+    "bytes": 167491,
+    "sha256": "8dbe70fb90816606a20b92231d77f945a295abd3a6ed8ab4154dec917f84dcf7"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-456/test/confusion_matrix_normalized.png",
+    "bytes": 143902,
+    "sha256": "87acd3bf5cf21787c1f7cb9e4cb02957742210816943e594f3138071332b894e"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-456/train/args.yaml",
+    "bytes": 1757,
+    "sha256": "4c21720d31ddf7cbbc389f4d885e76b99af4555ee6d0f6e678fa707f1bcfd7ad"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-456/train/BoxPR_curve.png",
+    "bytes": 174147,
+    "sha256": "1074adf0925f3980913b07af7c74bce6a36a427f0802fb1db3249d556ecd5c47"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-456/train/confusion_matrix_normalized.png",
+    "bytes": 142352,
+    "sha256": "0df122616b3d43f4fcccb1854bb5eeb6dee20f3983753832ca409033a427f50e"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-456/train/results.csv",
+    "bytes": 19715,
+    "sha256": "8f11d84f5a80277a27f1f95c5c4cd7e8bb4314b10d247c5fe8c79458e71c786f"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-456/train/results.png",
+    "bytes": 288060,
+    "sha256": "826485845b982d6541af29726a197b5d648eb3997746df8c69979f03421fbe52"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-456/validation/BoxPR_curve.png",
+    "bytes": 176418,
+    "sha256": "ef945057178aeaba054c42bff99e4c2b365e61b629c625f2711014e29a1613e7"
+  },
+  {
+    "path": "ardd26/yolo12s-baseline/seed-456/validation/confusion_matrix_normalized.png",
+    "bytes": 143498,
+    "sha256": "7510ad904f6cb65ba94f3f30ffe56ac4675343b4b338181c55ca719d2d4d40dc"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/architecture/yolo12s-ema-ghost.yaml",
+    "bytes": 2156,
+    "sha256": "c183aa3d1f5e7f80cb3cfe87fb93430b84525173e4e6e1f7694af17798ce1045"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/evaluation_metrics.json",
+    "bytes": 1704,
+    "sha256": "3e5479b45a091d840c6dab5e1f46707798a81ce89c1f09af9ce68fc15502415f"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/metadata/ardd26_4class_frozen.yaml",
+    "bytes": 170,
+    "sha256": "ebcd9cb28589e4e839b537e6f5c2e90201fb337acd048846db26bf3090f179de"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/metadata/repository_revision.txt",
+    "bytes": 158,
+    "sha256": "6e8e7e51d5fe1d2628644ab2c0924cbd3dfb31ab1ac6ce695f0e3e36bd65bf31"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/metadata/yolo12s_ema_ghost_semantic_pretrained_ardd26_planned_run.json",
+    "bytes": 1749,
+    "sha256": "f88b276f9873faa25bb371da336e6b8c024208e7b5c41e8bd824d202b07afa06"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/metadata/yolo12s_ema_ghost_semantic_pretrained_ardd26_run_manifest.json",
+    "bytes": 4304,
+    "sha256": "5cb45ef125bf872fe952498140d8274108e5448e2b1a064282d9e63f7e23d7d7"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/test/BoxPR_curve.png",
+    "bytes": 174916,
+    "sha256": "1df4e7a73e7b9ae040f04f7c610f7dee8b3dd6986c6b652026f52bc31095e4c8"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 144163,
+    "sha256": "add618a74b043e1016f736ea4497dd5d0ee0cc1a3ef89933e96fe793cd9da797"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/train/args.yaml",
+    "bytes": 1871,
+    "sha256": "e84ae7e7629cd62856f367c62be04c71247a52550f875ea8e3d470e52078462a"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/train/BoxPR_curve.png",
+    "bytes": 172719,
+    "sha256": "a8138f518bd4f99d7a5a4874d673b36bada687c8ff60ee6ddd3e1f9b95ee343f"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 141156,
+    "sha256": "b9ed9c1ee02a557d03c9c1f18fd2aaf20827410f9040456bcd66988599546f2b"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/train/results.csv",
+    "bytes": 19705,
+    "sha256": "dd8960a968730bdf75490f3cccc2ea693337a31125dfe66aa26c64320c240172"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/train/results.png",
+    "bytes": 284838,
+    "sha256": "547a2ef38c2e2b4fa8c24f1e43affe28f83b9222ea21357373e9b927e82e4c1b"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/train/semantic_pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "969c4ee63ae7bac565ebd5cc749d40950cabea9234eb353bfe4387f38942c418"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/validation/BoxPR_curve.png",
+    "bytes": 174609,
+    "sha256": "882952f8986988970a1098091be13513ae9372719692bdc4ca343e2be402c032"
+  },
+  {
+    "path": "ardd26/yolo12s-ema-ghost/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 142683,
+    "sha256": "aebb99d9d1a21a5834cd18ad5989557ff9cd9d930cfd28a21690c565f1c5a4ff"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/architecture/yolo12-ema32.yaml",
+    "bytes": 1470,
+    "sha256": "d9ad8d313adf24b30e3bba446261824c2e70cd410329bc57652a12a1a4cb49bc"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/evaluation_metrics.json",
+    "bytes": 808,
+    "sha256": "010f257454ae6fcaa3d3ff23e78e3e07f50ec594f71b94329f005d49ca07e48a"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/metadata/ardd26_4class.yaml",
+    "bytes": 170,
+    "sha256": "ebcd9cb28589e4e839b537e6f5c2e90201fb337acd048846db26bf3090f179de"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/metadata/repository_revision.txt",
+    "bytes": 131,
+    "sha256": "5292f91a01b9eb54fe5f356b9294879a115d78f99d606fbe55d908585f354f98"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/metadata/yolo12s_ema32_pretrained_ardd26_config.json",
+    "bytes": 1920,
+    "sha256": "d7b0da8fd26f9c9701d5f5cdd336638919c8361dc7f69e0c88568985af226473"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/test/BoxPR_curve.png",
+    "bytes": 165780,
+    "sha256": "15e701ed33516030d96c455eb0d5add1511884b1b2ec5e85233f514ca909513f"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 142469,
+    "sha256": "d0489045d0c4b08893b15ee67729b3f31d47de77975162dbb9797323230a69cd"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/train/args.yaml",
+    "bytes": 1823,
+    "sha256": "5e75cbf406b5c6e5a82ca541145553388efc3649e6ae91cb738349544fc91e57"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/train/BoxPR_curve.png",
+    "bytes": 174735,
+    "sha256": "8b4e98d593a0bbb74dea721bb48eabb449cfa4ef9eee26df2cb6494df50e9d78"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 141319,
+    "sha256": "fce9d25ae23f3c10d61d9c31c2f3809e58840c7411188e297d87a745c6508b0d"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/train/results.csv",
+    "bytes": 19702,
+    "sha256": "468b165720e7075746f0957afdfda8d62d98e30acc57379904e45f17268114eb"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/train/results.png",
+    "bytes": 289609,
+    "sha256": "3d846dd9b6b0e7ccfdb989dca969ba55e58006680dc4fdcd97f1c4d92541f1f3"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/validation/BoxPR_curve.png",
+    "bytes": 176951,
+    "sha256": "66f7376549de232a90322423d4cbdd0964f9f9e8e153668f74e8387a6210b9cb"
+  },
+  {
+    "path": "ardd26/yolo12s-ema32/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 142397,
+    "sha256": "a5bc90ab1b697a027c251f4067973d93b078eb2bd234cb023f4026168620d6b6"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/architecture/yolo12-ghost.yaml",
+    "bytes": 1371,
+    "sha256": "3d874edd8f8b39e5d00f55214290e17fa2c59c94abc540299b078843af318161"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/evaluation_metrics.json",
+    "bytes": 807,
+    "sha256": "e23229d08629e0d5b03034e7844fb34e0e52f950b94c0dbd4c3ef7e5cff76fd9"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/metadata/ardd26_4class.yaml",
+    "bytes": 170,
+    "sha256": "ebcd9cb28589e4e839b537e6f5c2e90201fb337acd048846db26bf3090f179de"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/metadata/repository_revision.txt",
+    "bytes": 136,
+    "sha256": "08e305e602ae8bd5457dfd23fbe9423edde15c87df39c50219da0d2a63d80594"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/metadata/yolo12s_ghost_pretrained_ardd26_config.json",
+    "bytes": 2439,
+    "sha256": "8845076f41025a7cb03cd6eab008dc9c837ea76ce792fb3fee81b116492a6105"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/test/BoxPR_curve.png",
+    "bytes": 170611,
+    "sha256": "866352adf1e09aa0f3c9704eb4f71649a0ea5e0b2a264d9144458ddece2f560d"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 141104,
+    "sha256": "3b6ddf615ead406cc044d0a5f8c78eeb86863d41b1abc828fa4c4fd4e3ac0753"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/train/args.yaml",
+    "bytes": 1823,
+    "sha256": "a3a01cb159ac12e6e8b6e6acaa14ba7b646fb392ea604863cabfcc249225db95"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/train/BoxPR_curve.png",
+    "bytes": 174609,
+    "sha256": "7feb60ff5a58903c4cfa9d2f0a45d6298de455773311b2250873cb655ea91614"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 143538,
+    "sha256": "cb4d77937b722b5fc177dbda691c0ab243784da800a8a38a03b64a2d827cfc72"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/train/results.csv",
+    "bytes": 19693,
+    "sha256": "cb8232e0c1d90a6bbaee7db7d7823ca2833db4ec84afc8a1f091278caf2ef52c"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/train/results.png",
+    "bytes": 280839,
+    "sha256": "e2bf57ab904b565b0fec11017eb4ec9fe8a677238d4dd654d0c9b4c7c97c949f"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/validation/BoxPR_curve.png",
+    "bytes": 175442,
+    "sha256": "1317ef55b37c7d4219eab7c42d0900f0cf818bf19ec588cb916a016e86536cc8"
+  },
+  {
+    "path": "ardd26/yolo12s-ghost/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 144048,
+    "sha256": "e10adadcc384200c9b4a07309c6a66c81a34c12eb010d973e49b64cb939cc77d"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/architecture/yolo12s-lghost-ema32.yaml",
+    "bytes": 1628,
+    "sha256": "8027c1971570811f2e45906c693fae15253717006f744724a6464a207dd694c5"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/evaluation_metrics.json",
+    "bytes": 1773,
+    "sha256": "1650bef284aff12ba29bea049673ae3edb734a0b756dd828bf0256b1f5ab9059"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/metadata/ardd26_4class.yaml",
+    "bytes": 170,
+    "sha256": "ebcd9cb28589e4e839b537e6f5c2e90201fb337acd048846db26bf3090f179de"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/metadata/yolo12s_lghost_ema32_pretrained_ardd26_seed123_config.json",
+    "bytes": 1752,
+    "sha256": "f72ac6ba27460a4d280fb1e70c402c1b6e3d2455ebe6350bd8ce1620da63bc74"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/test/BoxPR_curve.png",
+    "bytes": 170089,
+    "sha256": "a9b8fc7b7e8d71a1bf9120ca4c66b30fc330f83ca72b60b0f2a78dc37e627a12"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/test/confusion_matrix_normalized.png",
+    "bytes": 145053,
+    "sha256": "6fbc48a5949804b0b46fdbbc3fe8d973bd75182e2ce846c9941b9590e29601a8"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/train/args.yaml",
+    "bytes": 1879,
+    "sha256": "36d0aadb96dcb8ff814aa9aa640b2cd092163a8ec776a4b93ecf096e7765f6b1"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/train/BoxPR_curve.png",
+    "bytes": 173671,
+    "sha256": "be817d8b74e5e148e961575a7be24d5bde042b05dbec12300d46c763784f5935"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/train/confusion_matrix_normalized.png",
+    "bytes": 141997,
+    "sha256": "b0a97e230ff873ab2b2c252e376961c6017427ec1d66fabe9331c2bd5172ac36"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/train/lghost_pruning.jsonl",
+    "bytes": 505,
+    "sha256": "179ebfc1125334794ad45fa62795f3b1a3437d0fc91583ff161c028c3968c216"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/train/model.txt",
+    "bytes": 31027,
+    "sha256": "f10b5d6c5183f5d632abb8d31160b28c4a098eb3b5fab6ddca88504c6a6c2300"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/train/pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "ce0a3777ff3cc8146d612e1a1f2dd1971d93a4db39e07e617ca6302fbfbba85e"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/train/results.csv",
+    "bytes": 19670,
+    "sha256": "c716bf365ba278bf53c4ce36be19e3de763b1c95a7aa55f963eb2190e2ad5444"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/train/results.png",
+    "bytes": 271393,
+    "sha256": "05bf34c3eb7108465a58713c02cc0a7f3590886e014be43a747b41608b475e68"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/train/semantic_pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "ce0a3777ff3cc8146d612e1a1f2dd1971d93a4db39e07e617ca6302fbfbba85e"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/validation/BoxPR_curve.png",
+    "bytes": 175897,
+    "sha256": "c030ab8b39e314f07751a61733ce9c7673600220676246e9b1d348d2c9a9e9eb"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-123/validation/confusion_matrix_normalized.png",
+    "bytes": 143128,
+    "sha256": "01ebe4da3d6732bbe1d16066f884a723984f759e0e504ac38eb5ffa855cca376"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/architecture/yolo12s-lghost-ema32.yaml",
+    "bytes": 1628,
+    "sha256": "8027c1971570811f2e45906c693fae15253717006f744724a6464a207dd694c5"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/evaluation_metrics.json",
+    "bytes": 1743,
+    "sha256": "22d0326ad553791c5014f95a7362b269039e5a36d320ccb92af141684da07234"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/metadata/ardd26_4class.yaml",
+    "bytes": 170,
+    "sha256": "ebcd9cb28589e4e839b537e6f5c2e90201fb337acd048846db26bf3090f179de"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/metadata/yolo12s_lghost_ema32_pretrained_ardd26_config.json",
+    "bytes": 1692,
+    "sha256": "962ef8df5f27e7faeebfaa73181b34e8c7523b4a90fe6c41cbb8c5c279e48116"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/test/BoxPR_curve.png",
+    "bytes": 167015,
+    "sha256": "233281c019985252f372370acb64a9cce23ae80a8bb10b528a3de98c51c118ed"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 142765,
+    "sha256": "39f2497c56c1e0ad1ccbfc94d58cfe33745b53722f13f3a1d8c33d5fc965782b"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/train/args.yaml",
+    "bytes": 1862,
+    "sha256": "6312f2fc60da03d79a1d94c7f9328d850fb035072a0ddf6011e81da77ab26598"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/train/BoxPR_curve.png",
+    "bytes": 174042,
+    "sha256": "65f335882c6e2641abe60fd9716e1329f0e8f919575eac3aaffb18f66741bd8c"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 142935,
+    "sha256": "66a679e1aa7b0b41369f7d9d6d9397f6d9de1a7915c06d417156a33b18f88e75"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/train/lghost_pruning.jsonl",
+    "bytes": 505,
+    "sha256": "179ebfc1125334794ad45fa62795f3b1a3437d0fc91583ff161c028c3968c216"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/train/model.txt",
+    "bytes": 31027,
+    "sha256": "f10b5d6c5183f5d632abb8d31160b28c4a098eb3b5fab6ddca88504c6a6c2300"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/train/pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "ce0a3777ff3cc8146d612e1a1f2dd1971d93a4db39e07e617ca6302fbfbba85e"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/train/results.csv",
+    "bytes": 19719,
+    "sha256": "70cc041f739ad5d2cbfd7033718361d0edd87de8f1462004b25b51db8f9e66aa"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/train/results.png",
+    "bytes": 283621,
+    "sha256": "f81c237f2d27d34ce09eea51ab84f774fec04c0b2caea8a604796b57ce61c201"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/train/semantic_pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "ce0a3777ff3cc8146d612e1a1f2dd1971d93a4db39e07e617ca6302fbfbba85e"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/validation/BoxPR_curve.png",
+    "bytes": 174139,
+    "sha256": "2c06666ff7a17c8a88682d88089a2a174930a751bebb582abe49c2a8c3f98813"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 144006,
+    "sha256": "1c7c036a3267bf53658d527a476eb33710add24bd0943c9ff9ace1ab90751928"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/architecture/yolo12s-lghost-ema32.yaml",
+    "bytes": 1628,
+    "sha256": "8027c1971570811f2e45906c693fae15253717006f744724a6464a207dd694c5"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/evaluation_metrics.json",
+    "bytes": 1767,
+    "sha256": "6beb721ae69bb6d05b428d5665bea9d782450246bbdee623e1f6f52fce3653bd"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/metadata/ardd26_4class.yaml",
+    "bytes": 170,
+    "sha256": "ebcd9cb28589e4e839b537e6f5c2e90201fb337acd048846db26bf3090f179de"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/metadata/yolo12s_lghost_ema32_pretrained_ardd26_seed456_config.json",
+    "bytes": 1752,
+    "sha256": "a7c0edd428a81e96df7761f1f557e6d5081594f9a4947ef936926d18fc57b8b3"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/test/BoxPR_curve.png",
+    "bytes": 169552,
+    "sha256": "d5d7e021cabc3ae447938a97efe9824f5e64f14ce2d7ace4ea942efff693785d"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/test/confusion_matrix_normalized.png",
+    "bytes": 139926,
+    "sha256": "5410dac36fbfaec7dc334c262b4f353798d858acf13e4f35fd811b2feee9afc4"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/train/args.yaml",
+    "bytes": 1879,
+    "sha256": "8846eb836474ee0aeab9610d63594939576602b8e41b0609efcf1b533d7eac2e"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/train/BoxPR_curve.png",
+    "bytes": 173891,
+    "sha256": "0f837c49c2e0f50d7c39a5082b7307c8546452ac6553f0e59d16381a3a373f48"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/train/confusion_matrix_normalized.png",
+    "bytes": 140012,
+    "sha256": "eeeacec79981fe4ecce8fcdb0edd566e7a5ed065ca0c1799ea625dc59f4d18de"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/train/lghost_pruning.jsonl",
+    "bytes": 505,
+    "sha256": "179ebfc1125334794ad45fa62795f3b1a3437d0fc91583ff161c028c3968c216"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/train/model.txt",
+    "bytes": 31027,
+    "sha256": "f10b5d6c5183f5d632abb8d31160b28c4a098eb3b5fab6ddca88504c6a6c2300"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/train/pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "ce0a3777ff3cc8146d612e1a1f2dd1971d93a4db39e07e617ca6302fbfbba85e"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/train/results.csv",
+    "bytes": 19699,
+    "sha256": "879e546f21cfa0c6c300063660bbfc075d231fabcb123ae5d48fa4f6fd85e72a"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/train/results.png",
+    "bytes": 281873,
+    "sha256": "25961f3570d51c442f4e5a8520c9fafbe5e274bea63ba72a03e79e456b04253c"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/train/semantic_pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "ce0a3777ff3cc8146d612e1a1f2dd1971d93a4db39e07e617ca6302fbfbba85e"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/validation/BoxPR_curve.png",
+    "bytes": 174733,
+    "sha256": "f6c0c8bcff09463d6e6727b4e5e883b1a7728e29aa25ec47866aa2d060466ff0"
+  },
+  {
+    "path": "ardd26/yolo12s-lghost-ema32/seed-456/validation/confusion_matrix_normalized.png",
+    "bytes": 140751,
+    "sha256": "7311233fe9cbcf09f619b1e5e0190bba9cb2755c1995d01bd3ce8ef830c6b959"
+  },
+  {
+    "path": "ardd26/yolov8s/seed-42/evaluation_metrics.json",
+    "bytes": 814,
+    "sha256": "be615bda4c2f45939ed843941bb68c4b777ea974ca2f624191ae30ebb61154d3"
+  },
+  {
+    "path": "ardd26/yolov8s/seed-42/metadata/ardd26_4class.yaml",
+    "bytes": 170,
+    "sha256": "ebcd9cb28589e4e839b537e6f5c2e90201fb337acd048846db26bf3090f179de"
+  },
+  {
+    "path": "ardd26/yolov8s/seed-42/metadata/yolo12s_original_pretrained_ardd26_config.json",
+    "bytes": 1133,
+    "sha256": "ed2f42408471a90d3316bb77669993991fad7f50975a5b016602c88037a6d374"
+  },
+  {
+    "path": "ardd26/yolov8s/seed-42/test/BoxPR_curve.png",
+    "bytes": 173733,
+    "sha256": "4cf74d3430b23ccf4b93a62c52757b5618a481c21fc76c588f316d995fe80a4e"
+  },
+  {
+    "path": "ardd26/yolov8s/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 144832,
+    "sha256": "91800213b68b9de37a27bc27f4b03f7416fb4d0817f97e223ad9d42378fd8535"
+  },
+  {
+    "path": "ardd26/yolov8s/seed-42/train/args.yaml",
+    "bytes": 1740,
+    "sha256": "ad9262c6f97470a9aa6ea2442c54ea80f7e3e8b73e8a40b18481995eb474ecba"
+  },
+  {
+    "path": "ardd26/yolov8s/seed-42/train/BoxPR_curve.png",
+    "bytes": 178038,
+    "sha256": "34d1784f66d5f35a6ec7067b1b7906afe4ae7288606c7967344af32414448fc8"
+  },
+  {
+    "path": "ardd26/yolov8s/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 143913,
+    "sha256": "65d88f121ad5beca4db26d0d6b0f2c16a04853ab8cc85e4a1f498348aadd3933"
+  },
+  {
+    "path": "ardd26/yolov8s/seed-42/train/results.csv",
+    "bytes": 19701,
+    "sha256": "7ca76e3bd7819d19e68375bc19234e8cb164d1a0e64571726d834c8dc4c40cbf"
+  },
+  {
+    "path": "ardd26/yolov8s/seed-42/train/results.png",
+    "bytes": 296042,
+    "sha256": "3faf0da215c74c1db7ccd0e679dd3661ced1eaa36eec5162d87c04596a6ca7b0"
+  },
+  {
+    "path": "ardd26/yolov8s/seed-42/validation/BoxPR_curve.png",
+    "bytes": 178267,
+    "sha256": "97e8dbecb26f5a305a2cfbe940061ab303bd53fae169024c129837d4a93e48c3"
+  },
+  {
+    "path": "ardd26/yolov8s/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 143916,
+    "sha256": "725af0029b64f398eac36589d5f3f60963197c514d2b042d77fa99e395bde493"
+  },
+  {
+    "path": "ch-rdd2022/notebook-evidence/rdd22-yolo12s-baseline-multiseed.ipynb",
+    "bytes": 237113,
+    "sha256": "4d221a95887e8df6e7e7ae4806b2905ae7e8cd49e7ffde9e1bf67d87b9b29dfd"
+  },
+  {
+    "path": "ch-rdd2022/notebook-evidence/rdd22-yolo12s-lghost-ema32-multiseed.ipynb",
+    "bytes": 260609,
+    "sha256": "1dd6dacd5aa94067ef727beabfcf23f6e9d469482b3f94ce75dd64584c65c53b"
+  },
+  {
+    "path": "ch-rdd2022/yolo11s/seed-42/evaluation_metrics.json",
+    "bytes": 487,
+    "sha256": "e17c9a5d1a2f71f324aa99e32ec26f4e58ed8b2f97b42000c322c216d8024da0"
+  },
+  {
+    "path": "ch-rdd2022/yolo11s/seed-42/metadata/ch_rdd2022.yaml",
+    "bytes": 198,
+    "sha256": "e64fd4a1cc8877c1393e6d129c149807367b768333862793c41cfe34b028bd59"
+  },
+  {
+    "path": "ch-rdd2022/yolo11s/seed-42/metadata/yolo11s_original_pretrained_ch_rdd2022_config.json",
+    "bytes": 533,
+    "sha256": "6275fa88d9c02d15bc41ca5b18cc99b912a65b94343563a8f27c68893cef3b76"
+  },
+  {
+    "path": "ch-rdd2022/yolo11s/seed-42/test/BoxPR_curve.png",
+    "bytes": 159944,
+    "sha256": "afdced292ed104bb8b0f603a7984225012bc951d626a822e8f6b75b5f654bd97"
+  },
+  {
+    "path": "ch-rdd2022/yolo11s/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 173082,
+    "sha256": "585809191f54183bb156c84e4304b616b1accc3c5d4feaaedc50c4861c03b291"
+  },
+  {
+    "path": "ch-rdd2022/yolo11s/seed-42/train/args.yaml",
+    "bytes": 1731,
+    "sha256": "ec08278a0680fcb6eacf0ac6c8417f6b743f632a559711155240266a02cb4da7"
+  },
+  {
+    "path": "ch-rdd2022/yolo11s/seed-42/train/BoxPR_curve.png",
+    "bytes": 157200,
+    "sha256": "f02c67cc01c9181cf8e06fafa309674b33fb413244d882998b12c9774c7dbe0c"
+  },
+  {
+    "path": "ch-rdd2022/yolo11s/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 166370,
+    "sha256": "0e6a46c749e25de5058d7b64238f9d14b8b5fad79134354aed90fe06839bb7b0"
+  },
+  {
+    "path": "ch-rdd2022/yolo11s/seed-42/train/results.csv",
+    "bytes": 19700,
+    "sha256": "29ac49fece074293f0fbfb628200afaf9ff9f0ef170f1e4ca0e156574a296e2b"
+  },
+  {
+    "path": "ch-rdd2022/yolo11s/seed-42/train/results.png",
+    "bytes": 268449,
+    "sha256": "05d059cfec5e9915f3f67a14b89f56da237c92617950528f47088c023d738669"
+  },
+  {
+    "path": "ch-rdd2022/yolo11s/seed-42/validation/BoxPR_curve.png",
+    "bytes": 157229,
+    "sha256": "ddf1bb546d1bc34063087ceaadbab7029c551abc803bc2fd5cf5e36bf52c0b8c"
+  },
+  {
+    "path": "ch-rdd2022/yolo11s/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 165449,
+    "sha256": "24fae3286d81445cb420a3ee48a674fe94043e55d04c8ae20f4a2a500e524b96"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-123/evaluation_metrics.json",
+    "bytes": 536,
+    "sha256": "0d18c62ffe298035fa5467f33f7244523341d165839c123d63b210cb4b0de552"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-42/evaluation_metrics.json",
+    "bytes": 487,
+    "sha256": "49876a800405d5c6b86bd803196987e27ee0a11667dfddf2ed2f213b9342a8a8"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-42/metadata/ch_rdd2022.yaml",
+    "bytes": 198,
+    "sha256": "e64fd4a1cc8877c1393e6d129c149807367b768333862793c41cfe34b028bd59"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-42/metadata/yolo12s_original_pretrained_ch_rdd2022_config.json",
+    "bytes": 533,
+    "sha256": "4149db9268f130877f70f769002dd4f51a87eb34882dbe6fd4b99895bcf0f7ad"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-42/test/BoxPR_curve.png",
+    "bytes": 153025,
+    "sha256": "f3037e0bf8a52acba701fee46104e99c83363a1247d1b72a29e250284b4015e0"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 157298,
+    "sha256": "6b3797d3e6af5532d5b1e6ec0a4c09796ba0ae812c945d85fec3433a3e47cbc3"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-42/train/args.yaml",
+    "bytes": 1759,
+    "sha256": "e7dbfd2c6e524c9ca46c5ccde4fb2e3215a7e2b35ece6eedc788aedbc3ec2649"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-42/train/BoxPR_curve.png",
+    "bytes": 159217,
+    "sha256": "bff3b8d0b5553ba7fffd11b26cda7a1a8af051e406f7d36d889cacf92a0b052d"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 155297,
+    "sha256": "d2933d256ffbea87db29456901f7aa78977b60f8345283706db964eba5b31c70"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-42/train/results.csv",
+    "bytes": 19735,
+    "sha256": "0d19bd86ad73ea3a060a1fad4c4d6aae7f927cf68739a0b6eab43066dcf3cd28"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-42/train/results.png",
+    "bytes": 264222,
+    "sha256": "b74e1e65fbbc4cf10b311510097fba14cd43a8a3c872bcf79ea1b3d7ab8366d6"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-42/validation/BoxPR_curve.png",
+    "bytes": 158594,
+    "sha256": "0e2052e612f339bec2957b1809aaccdba72a1bec1376d13a6259c61f825ab1cf"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 153641,
+    "sha256": "41cff150cc5faa4fcf1068c2c9d2e4c63f3dc66b5d4048bcfbfbb22d362308ae"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-456/evaluation_metrics.json",
+    "bytes": 516,
+    "sha256": "a9b7f11bf1bd6c85fc760ad60aa08e1f0f8fafbe9564066ef97f5ba58504d5d3"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-456/metadata/ch_rdd2022.yaml",
+    "bytes": 198,
+    "sha256": "e64fd4a1cc8877c1393e6d129c149807367b768333862793c41cfe34b028bd59"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-456/metadata/yolo12s_original_pretrained_ch_rdd2022_seed456_config.json",
+    "bytes": 593,
+    "sha256": "a9d96182ff38af06d61ba848d07a9da25ad2ff1fdcb149ce84084e0b742ccfe0"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-456/test/BoxPR_curve.png",
+    "bytes": 157917,
+    "sha256": "15555d1df343d1e8e8368e77a3500ee48bd69438b521beb6ca9445e9ec3e82b1"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-456/test/confusion_matrix_normalized.png",
+    "bytes": 154459,
+    "sha256": "6121129ea264b512c3ae30c7b046a9452d41651428a1b8b3df7aa3b47a174308"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-456/train/args.yaml",
+    "bytes": 1776,
+    "sha256": "a19e3e1c8f67d13ef4567ec7af640659711d119f7dbe0bf389eb8cd9fd38806c"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-456/train/BoxPR_curve.png",
+    "bytes": 149829,
+    "sha256": "657aee4c601488cb30733a914bce86c448352ceeceaf7f1536fd7579543dbada"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-456/train/confusion_matrix_normalized.png",
+    "bytes": 154994,
+    "sha256": "dcc33d8c95d95335a415fa87f8f2a3463b0420551de9f86f3dbffa1ebcb79514"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-456/train/results.csv",
+    "bytes": 19718,
+    "sha256": "ec3a9c93234aa1a1a7bf95d2c011aad3c1ac59f920d2a75c71e1e38133adbb9b"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-456/train/results.png",
+    "bytes": 276928,
+    "sha256": "52205c95bb24e3eeb038a07d195098d126b084176b60d3d96f384c2c806258ca"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-456/validation/BoxPR_curve.png",
+    "bytes": 150518,
+    "sha256": "ea4f292c4a1c97e7846ea55f42b68b5d8c1f03daf41504578295eaeceeff4128"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-baseline/seed-456/validation/confusion_matrix_normalized.png",
+    "bytes": 155410,
+    "sha256": "62763cf9632a297d694a1692903a02bbf08459face354384f9bcc6cbdd54027d"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/architecture/yolo12s-ema-ghost.yaml",
+    "bytes": 2156,
+    "sha256": "c183aa3d1f5e7f80cb3cfe87fb93430b84525173e4e6e1f7694af17798ce1045"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/evaluation_metrics.json",
+    "bytes": 1379,
+    "sha256": "bf8cfe46c2286d901abff975480e7baec94ff11167f04fd44ea662970c9eab1b"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/metadata/ch_rdd2022_frozen.yaml",
+    "bytes": 198,
+    "sha256": "e64fd4a1cc8877c1393e6d129c149807367b768333862793c41cfe34b028bd59"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/metadata/repository_revision.txt",
+    "bytes": 158,
+    "sha256": "6e8e7e51d5fe1d2628644ab2c0924cbd3dfb31ab1ac6ce695f0e3e36bd65bf31"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/metadata/yolo12s_ema_ghost_semantic_pretrained_ch_rdd2022_planned_run.json",
+    "bytes": 976,
+    "sha256": "9a0eb8018170b84d2bae16b29d1df9909fe2dd7eaadabe7f2566f1c9a2b79f97"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/metadata/yolo12s_ema_ghost_semantic_pretrained_ch_rdd2022_run_manifest.json",
+    "bytes": 3190,
+    "sha256": "690ba66a1bd250172d19245ef60c6a88374112d906737fba45c9a314f9b0257b"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/test/BoxPR_curve.png",
+    "bytes": 160235,
+    "sha256": "2c406e06ea02da8279c82998a5c1163853855bf3ec1b088eec773cd52ba51d51"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 154042,
+    "sha256": "b58dffcf3c1fa6e3197d5c4a038cf920216b9b757de6a707555cb99ef10744e6"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/train/args.yaml",
+    "bytes": 1876,
+    "sha256": "8e74368054377a61c622be07ad6d63105e0a5abb2652d13a28d59aa22be46c94"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/train/BoxPR_curve.png",
+    "bytes": 158440,
+    "sha256": "e8eabecfe86910c82ef800fccdf8dc8d5f881d10eb47f716097a3e90ee8d7dc1"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 155431,
+    "sha256": "7e1d2976864379b48e63e2f2c728b32f59a6171d4cf01735e1505542f05343d0"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/train/results.csv",
+    "bytes": 19715,
+    "sha256": "5b688b337a7307931466116165e0906767bfb3126b5e2dc867d30e3a155d4055"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/train/results.png",
+    "bytes": 266057,
+    "sha256": "4d0fa10c334a3f54ca51c8127158ee15cdd4cf84a4607f5e5140aada45003f54"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/train/semantic_pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "969c4ee63ae7bac565ebd5cc749d40950cabea9234eb353bfe4387f38942c418"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/validation/BoxPR_curve.png",
+    "bytes": 157313,
+    "sha256": "0d34e9b874e51a9ecf40e27a42c3cc72ce720df38f9031a2827d11d33d51963a"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema-ghost/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 154892,
+    "sha256": "8d721212693d422090128f6b5fcef3c6da760e34dbfeaa9be454e933d906e740"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/architecture/yolo12-ema32.yaml",
+    "bytes": 1470,
+    "sha256": "d9ad8d313adf24b30e3bba446261824c2e70cd410329bc57652a12a1a4cb49bc"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/evaluation_metrics.json",
+    "bytes": 481,
+    "sha256": "ef4e5d226c384c4ab2300ad359a5ad40ebcaa10e364177ecca7e1abb4cab4bf8"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/metadata/ch_rdd2022.yaml",
+    "bytes": 198,
+    "sha256": "e64fd4a1cc8877c1393e6d129c149807367b768333862793c41cfe34b028bd59"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/metadata/repository_revision.txt",
+    "bytes": 131,
+    "sha256": "5292f91a01b9eb54fe5f356b9294879a115d78f99d606fbe55d908585f354f98"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/metadata/yolo12s_ema32_ch_rdd2022_pretrained_config.json",
+    "bytes": 1252,
+    "sha256": "e71a37a5f7d8a1b486b8e6dab2cf5d47d3a1bbe3383a51c509abcf8b7c2dac31"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/test/BoxPR_curve.png",
+    "bytes": 154826,
+    "sha256": "70ee89cef2e07086d6de3a6771b1c870d37a899e333edb440db30e81cd70bc00"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 157698,
+    "sha256": "4649a13abe481c90959a6f036f954e4162b36ceb1cf1da2ed84b9056820cb184"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/train/args.yaml",
+    "bytes": 1821,
+    "sha256": "9a5fbd44f277955cdcd71febeb2cec67a908ee7b00f9697473559a1e19f6cdae"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/train/BoxPR_curve.png",
+    "bytes": 157606,
+    "sha256": "836c14974c12b12afcb82483898ddde91b128545416d1ff44882db52dab6c122"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 155998,
+    "sha256": "436070bf1cef5e04ba589bd49fbda2dbbfca9e639ce8d16cbc0a25f1454f756c"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/train/results.csv",
+    "bytes": 19726,
+    "sha256": "72ea49e81a50628c6f9d83f3eb52cf5c38677695406eafab64827800f28ee03b"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/train/results.png",
+    "bytes": 265747,
+    "sha256": "2863d02b7471ca5ce796fca393a2ff8f2fe499059ac6e9d4b0464f4b7efe7f93"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/validation/BoxPR_curve.png",
+    "bytes": 156543,
+    "sha256": "51368d071279955318228e2414453eac14fac6bfed4e5287bcc1522650cece0f"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ema32/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 155053,
+    "sha256": "db44dc016714efc4936faf43056cf0f16e69782b88f722e92aedd4e4b67bb3dc"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/architecture/yolo12-ghost.yaml",
+    "bytes": 1371,
+    "sha256": "3d874edd8f8b39e5d00f55214290e17fa2c59c94abc540299b078843af318161"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/evaluation_metrics.json",
+    "bytes": 481,
+    "sha256": "cc7e90bd1bd281ed8ea5061f624d747c396319896dcdfd622a91157961bc7a97"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/metadata/ch_rdd2022.yaml",
+    "bytes": 198,
+    "sha256": "e64fd4a1cc8877c1393e6d129c149807367b768333862793c41cfe34b028bd59"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/metadata/repository_revision.txt",
+    "bytes": 136,
+    "sha256": "08e305e602ae8bd5457dfd23fbe9423edde15c87df39c50219da0d2a63d80594"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/metadata/yolo12s_ghost_ch_rdd2022_pretrained_config.json",
+    "bytes": 1684,
+    "sha256": "2fb795fcc2592f1ad855917160ffbe7df64d8c7eb3d5fec2eed4ab0034327fed"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/test/BoxPR_curve.png",
+    "bytes": 158327,
+    "sha256": "50c240bcfa1251a3c6c960cf628ff36095ebdf56355ac65830d569625e075426"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 158091,
+    "sha256": "664e3868ce548a70f5f8b4e35d2257f0c7169c60e758a3e74548067594e08d01"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/train/args.yaml",
+    "bytes": 1821,
+    "sha256": "c515a0f740f40a7b20c0155d256a22e3052caca409a3686a92748bbe50adfd62"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/train/BoxPR_curve.png",
+    "bytes": 154134,
+    "sha256": "1b13f6717ecd14e754870fbcf4f7ca531957ff402d7b1cbc5df9f5a519b70d7a"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 150636,
+    "sha256": "f71afc948142eca42265bd164ecb6f0c6beef8beb8f7c69250143bf566ebf377"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/train/results.csv",
+    "bytes": 19714,
+    "sha256": "6eda8ae32b605bc091d4a992f2e0adde81ebdec913de944bdf9d99a59f791cde"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/train/results.png",
+    "bytes": 252141,
+    "sha256": "f6c54ab8af143317f7e7de58ad9e7bef73599a960e5c431ae26237382c19ca43"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/validation/BoxPR_curve.png",
+    "bytes": 151823,
+    "sha256": "af74f9bf583d7e274ef521fc7de10a103dde138c12b794ba91a1c3693cdb0096"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-ghost/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 149564,
+    "sha256": "2f7596ec92d74fecd786ee9c799f1cc6d50d3dd39e1fb8df8df48a683004a5fd"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/architecture/yolo12s-lghost.yaml",
+    "bytes": 1755,
+    "sha256": "2991d91e27ac3b05a7c161fec0b52c74afb508c9a829c790cdf08581f9a1e5e3"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/evaluation_metrics.json",
+    "bytes": 1415,
+    "sha256": "f1723103de6195b9c346fb832e840f64844d403c2989f52b44d34da9f3901cb0"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/metadata/ch_rdd2022_frozen.yaml",
+    "bytes": 198,
+    "sha256": "e64fd4a1cc8877c1393e6d129c149807367b768333862793c41cfe34b028bd59"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/metadata/repository_revision.txt",
+    "bytes": 144,
+    "sha256": "c68a5139490ad6847cb7f4b2744db5344519d6e7df2dc4b129cb63a5a0789924"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/metadata/yolo12s_lghost_semantic_pretrained_ch_rdd2022_planned_run.json",
+    "bytes": 956,
+    "sha256": "382b208436c0e00258adddb8dc344fcf7a0d6b3ab58cd7130e7c76c90f05dd27"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/metadata/yolo12s_lghost_semantic_pretrained_ch_rdd2022_run_manifest.json",
+    "bytes": 3208,
+    "sha256": "395aba18e7a6ecdfe5b7efc4eb1d2f869f950ee7d529b3bbe1fa0eac889a2e11"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/test/BoxPR_curve.png",
+    "bytes": 155293,
+    "sha256": "442a69ad4276e48ef22b32d3dcefa856b76764cf09f9a524377a9484bb047b9d"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 154380,
+    "sha256": "7b836d9c25377910d89328f780b5a95632d9185a463bf5076007bea27079f4ba"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/train/args.yaml",
+    "bytes": 1864,
+    "sha256": "80fb60c04cf421c0269faa6e460d390f101d8c3de9ab1a427e7d94818b324f20"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/train/BoxPR_curve.png",
+    "bytes": 145728,
+    "sha256": "a5ce66bb442b079327cb1f29a2a115572e1ddf2d06fce6dc813754f5df0f142a"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 153858,
+    "sha256": "09841cd8abdc0be07fb9181fd37f2ce4c2e69952cf87ed3aabc987ea29404ea6"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/train/lghost_pruning.jsonl",
+    "bytes": 505,
+    "sha256": "179ebfc1125334794ad45fa62795f3b1a3437d0fc91583ff161c028c3968c216"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/train/pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "ae8e46dc55c39f358f6d08a3849c4e0320994d2ea41a17b01b742c29af829a3e"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/train/results.csv",
+    "bytes": 19698,
+    "sha256": "82b497b768733e60affa5355830e5f2adf91a07ef5e8bec8434986a44e8b62be"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/train/results.png",
+    "bytes": 273251,
+    "sha256": "7d2ec4f0286a8c515d62b606dcdaaf8dd7630d207e4b8e1c2c1d5ac176b80925"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/train/semantic_pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "ae8e46dc55c39f358f6d08a3849c4e0320994d2ea41a17b01b742c29af829a3e"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/validation/BoxPR_curve.png",
+    "bytes": 147737,
+    "sha256": "eaa1b5434a08e852e1267c224f5c1182169989f87652de5b8c27418b15ca2354"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 153304,
+    "sha256": "c05054283880eb901fdbe74cf687c4ef752c708aa86d4f10401c5894ae7287b4"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-123/evaluation_metrics.json",
+    "bytes": 1518,
+    "sha256": "346e40380e327f21633f6570dd6b90dbab1fb1e1cb0834c6f2d0ea6e051fde5f"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/architecture/yolo12s-lghost-ema32.yaml",
+    "bytes": 1628,
+    "sha256": "8027c1971570811f2e45906c693fae15253717006f744724a6464a207dd694c5"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/evaluation_metrics.json",
+    "bytes": 1427,
+    "sha256": "3c015bb14fe8d5cf287ff8ff89fbef97ae1baf5bcc48fce0f92bb9876a90c32c"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/metadata/ch_rdd2022_frozen.yaml",
+    "bytes": 198,
+    "sha256": "e64fd4a1cc8877c1393e6d129c149807367b768333862793c41cfe34b028bd59"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/metadata/repository_revision.txt",
+    "bytes": 144,
+    "sha256": "c68a5139490ad6847cb7f4b2744db5344519d6e7df2dc4b129cb63a5a0789924"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/metadata/yolo12s_lghost_ema32_semantic_pretrained_ch_rdd2022_planned_run.json",
+    "bytes": 968,
+    "sha256": "979ca8ef673890014caa87701a9a2ed0d753c77ccb8a0874ccf492a2d4e24c72"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/metadata/yolo12s_lghost_ema32_semantic_pretrained_ch_rdd2022_run_manifest.json",
+    "bytes": 3244,
+    "sha256": "22f0302edb8288d4ff73513f2f140d82c1eec9ed6c4e952f4ad2d83994081e72"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/test/BoxPR_curve.png",
+    "bytes": 150511,
+    "sha256": "dd463e0263b516cc6f0e0c8dc3e83aacdc93c7e3ae17645887d2bfd2fe6aa3fd"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 160647,
+    "sha256": "efac38144b9cdc741ced079911c7908ff4347e190bc43a023fa6aa6f9a621b1b"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/train/args.yaml",
+    "bytes": 1888,
+    "sha256": "4a847fa920b71c2c85528e97a0469d8c2a31ebea76bc2c740e25e0210fa47265"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/train/BoxPR_curve.png",
+    "bytes": 146597,
+    "sha256": "168dfc2a741d590d66334093f4f02e407cafa39f3f38124549e7d26b83c218f4"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 152904,
+    "sha256": "e228f8d5ee084b3fb14ef889f60abfea389ab6d000d029c8f2aceb9d477a140b"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/train/lghost_pruning.jsonl",
+    "bytes": 505,
+    "sha256": "179ebfc1125334794ad45fa62795f3b1a3437d0fc91583ff161c028c3968c216"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/train/pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "ce0a3777ff3cc8146d612e1a1f2dd1971d93a4db39e07e617ca6302fbfbba85e"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/train/results.csv",
+    "bytes": 19677,
+    "sha256": "0bd117b00d4ad8039ecae16733c7d6706e067c4b4857cdeb83ce398526b25494"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/train/results.png",
+    "bytes": 273491,
+    "sha256": "f3b761dd88ed50bde1e492c66ec2a7d4ba889f64b936846fb1a969290f4833c6"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/train/semantic_pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "ce0a3777ff3cc8146d612e1a1f2dd1971d93a4db39e07e617ca6302fbfbba85e"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/validation/BoxPR_curve.png",
+    "bytes": 146686,
+    "sha256": "a49a0e486d6bf73f4eba605938eae10f4b03610a35c8bcdbd9a990470fc44fa9"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 152921,
+    "sha256": "6cb41140203d9d93c2df68afe02b3f3cb4f432a795e5ef3fb7d41d6019bf98cd"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/architecture/yolo12s-lghost-ema32.yaml",
+    "bytes": 1628,
+    "sha256": "8027c1971570811f2e45906c693fae15253717006f744724a6464a207dd694c5"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/evaluation_metrics.json",
+    "bytes": 1457,
+    "sha256": "8fa34525d95c94930219aba56c3610fe8fb1bf0fb93d3c83e656097e3cacc8db"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/metadata/ch_rdd2022_frozen.yaml",
+    "bytes": 198,
+    "sha256": "e64fd4a1cc8877c1393e6d129c149807367b768333862793c41cfe34b028bd59"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/metadata/repository_revision.txt",
+    "bytes": 144,
+    "sha256": "c68a5139490ad6847cb7f4b2744db5344519d6e7df2dc4b129cb63a5a0789924"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/metadata/yolo12s_lghost_ema32_semantic_pretrained_ch_rdd2022_planned_run.json",
+    "bytes": 1036,
+    "sha256": "0a6a69eba1f1cb74bd75f72f1fea801bde83c50923e55abce4ca012e0e890976"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/metadata/yolo12s_lghost_ema32_semantic_pretrained_ch_rdd2022_seed456_config.json",
+    "bytes": 3346,
+    "sha256": "a3a57aa1d9f9aa9f371117c53d85e65dc70145f3b00cdf6d7e612d2e434e57e6"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/test/BoxPR_curve.png",
+    "bytes": 159129,
+    "sha256": "3415fa317342a80d16079205bf77f293caf40e8913d5d883f1527b668e3a1df7"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/test/confusion_matrix_normalized.png",
+    "bytes": 154494,
+    "sha256": "7b109f441247faab696d2e2aee1eedcf36fd3a0194f8b207069e8208d4417aa4"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/train/args.yaml",
+    "bytes": 1905,
+    "sha256": "f70e0722b9bdc0b19b1c24d305ec3be96c8368ebe83678181cac490e7470a0f6"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/train/BoxPR_curve.png",
+    "bytes": 155367,
+    "sha256": "3a1b0820497e8dfe79e93f326b4c7c4fb34656ff3f4e37eb28765de4681fb929"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/train/confusion_matrix_normalized.png",
+    "bytes": 152905,
+    "sha256": "695099b0fed9c36847f22ae1d5c7c554c52c7baf1f898511df278950febac4a5"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/train/lghost_pruning.jsonl",
+    "bytes": 505,
+    "sha256": "179ebfc1125334794ad45fa62795f3b1a3437d0fc91583ff161c028c3968c216"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/train/pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "ce0a3777ff3cc8146d612e1a1f2dd1971d93a4db39e07e617ca6302fbfbba85e"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/train/results.csv",
+    "bytes": 19716,
+    "sha256": "daf79c1b85fc43efc5a404322622bcda484003c282e933138f4e89cc400e296b"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/train/results.png",
+    "bytes": 275873,
+    "sha256": "578003a3b3b36736f9f442c8b53b57a582b4fca612698aab8c422eab294ba655"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/train/semantic_pretrained_transfer.json",
+    "bytes": 769,
+    "sha256": "ce0a3777ff3cc8146d612e1a1f2dd1971d93a4db39e07e617ca6302fbfbba85e"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/validation/BoxPR_curve.png",
+    "bytes": 154901,
+    "sha256": "4501bf0412c1b12e28f1fab54af0ec21916d197bfee957cf136dd13dd0f25062"
+  },
+  {
+    "path": "ch-rdd2022/yolo12s-lghost-ema32/seed-456/validation/confusion_matrix_normalized.png",
+    "bytes": 153451,
+    "sha256": "711d2a5df3d01b797974fd23566cd280f8aa8787aa82cf272936e311f358b574"
+  },
+  {
+    "path": "ch-rdd2022/yolov8s/seed-42/evaluation_metrics.json",
+    "bytes": 486,
+    "sha256": "4d35b8a6262f2cb6de958f57336b94fdf3714f21475bc35cfb3a3c660e3372a2"
+  },
+  {
+    "path": "ch-rdd2022/yolov8s/seed-42/metadata/ch_rdd2022.yaml",
+    "bytes": 198,
+    "sha256": "e64fd4a1cc8877c1393e6d129c149807367b768333862793c41cfe34b028bd59"
+  },
+  {
+    "path": "ch-rdd2022/yolov8s/seed-42/metadata/yolov8s_original_pretrained_ch_rdd2022_config.json",
+    "bytes": 533,
+    "sha256": "de06e3314cc9bcbab1d1cac3a3298a943c7f20286dc82eda90b36e19ecaed9e7"
+  },
+  {
+    "path": "ch-rdd2022/yolov8s/seed-42/test/BoxPR_curve.png",
+    "bytes": 152110,
+    "sha256": "c4c0b7c47baae0f1e68d48675b67cfac4a8ca52ec288b62f8820c6fc7ee5a02f"
+  },
+  {
+    "path": "ch-rdd2022/yolov8s/seed-42/test/confusion_matrix_normalized.png",
+    "bytes": 176516,
+    "sha256": "9ec5af237ebcb11427110a9a988e63806dbe791884de5c6566cbddf00f829cef"
+  },
+  {
+    "path": "ch-rdd2022/yolov8s/seed-42/train/args.yaml",
+    "bytes": 1731,
+    "sha256": "44c4e3abc9caa463bcb2440c45cd7aed4569fe1819e67cc5b488793df6c81984"
+  },
+  {
+    "path": "ch-rdd2022/yolov8s/seed-42/train/BoxPR_curve.png",
+    "bytes": 150937,
+    "sha256": "7cbbd024d783ec801ede33fb7cc008c32fae56e90a00501117822f2f3a8753df"
+  },
+  {
+    "path": "ch-rdd2022/yolov8s/seed-42/train/confusion_matrix_normalized.png",
+    "bytes": 170786,
+    "sha256": "76d228e66ecc587949c8f8281f0117d2ad6e0a8faa114d41a39b96c51836bca3"
+  },
+  {
+    "path": "ch-rdd2022/yolov8s/seed-42/train/results.csv",
+    "bytes": 19717,
+    "sha256": "678abe890729fc2b779d6635cf46afd27d2b77a24565fc725932d0de0e43f1b0"
+  },
+  {
+    "path": "ch-rdd2022/yolov8s/seed-42/train/results.png",
+    "bytes": 284112,
+    "sha256": "9d1de504934847313a0e5dd5f1348c854210850da81ff23ae14dc5c55cef434e"
+  },
+  {
+    "path": "ch-rdd2022/yolov8s/seed-42/validation/BoxPR_curve.png",
+    "bytes": 152096,
+    "sha256": "24a60eb92beb72cde68bf90b62adc157c5a2e8a951a20355857357264bf48cec"
+  },
+  {
+    "path": "ch-rdd2022/yolov8s/seed-42/validation/confusion_matrix_normalized.png",
+    "bytes": 169096,
+    "sha256": "bc85752a477dcf08b090a21b1c2cf968199e82923bb44afb86a0200ef88b0043"
+  },
+  {
+    "path": "notebook-extraction.json",
+    "bytes": 1043,
+    "sha256": "8914bd0320730b9f19f3fd38806ae9a0c747b1ec20da581b2536cf2960689f43"
+  },
+  {
+    "path": "README.md",
+    "bytes": 5247,
+    "sha256": "02b06d5952952d401e969df9b6c7a4ec4747813720474b6d8cb084995d340b3c"
+  },
+  {
+    "path": "selection.csv",
+    "bytes": 276541,
+    "sha256": "72977161d87e3c621949bb474368d0a7cb036b983d55cedc3fac9a87363114ad"
+  },
+  {
+    "path": "summary.csv",
+    "bytes": 7914,
+    "sha256": "a57d3f574ea5104ff4040e3a9c65b20efc5e07bca43548b15237be12866b2f1b"
+  }
+]

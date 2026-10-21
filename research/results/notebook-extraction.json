@@ -1,0 +1,23 @@
+[
+  {
+    "derived_file": "ardd26/yolo12s-baseline/seed-123/evaluation_metrics.json",
+    "notebook": "ardd26/notebook-evidence/ard26-yolo12s-baseline-multiseed.ipynb",
+    "cell_index_zero_based": 4,
+    "output_index_zero_based": 0,
+    "method": "Exact JSON object decoded from retained text output; no metric recalculated."
+  },
+  {
+    "derived_file": "ch-rdd2022/yolo12s-baseline/seed-123/evaluation_metrics.json",
+    "notebook": "ch-rdd2022/notebook-evidence/rdd22-yolo12s-baseline-multiseed.ipynb",
+    "cell_index_zero_based": 4,
+    "output_index_zero_based": 2,
+    "method": "Exact JSON object decoded from retained text output; no metric recalculated."
+  },
+  {
+    "derived_file": "ch-rdd2022/yolo12s-lghost-ema32/seed-123/evaluation_metrics.json",
+    "notebook": "ch-rdd2022/notebook-evidence/rdd22-yolo12s-lghost-ema32-multiseed.ipynb",
+    "cell_index_zero_based": 5,
+    "output_index_zero_based": 0,
+    "method": "Exact JSON object decoded from retained text output; no metric recalculated."
+  }
+]

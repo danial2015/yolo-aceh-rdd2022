@@ -1,0 +1,169 @@
+{
+  "repository": "https://github.com/danial2015/yolo-aceh-rdd2022.git",
+  "frozen_tag": "research/yolo12s-ema-ghost-architecture-v1",
+  "frozen_commit": "d199dd3bac9dd70875370ed3ba16a8a22da1a21b",
+  "model_yaml": "/kaggle/working/yolo-aceh-rdd2022-ema-ghost/ultralytics/cfg/models/12/yolo12s-ema-ghost.yaml",
+  "dataset_root": "/kaggle/input/datasets/danialalfayyadh/ardd26/datasets_here",
+  "dataset_yaml": "/kaggle/working/ardd26_4class_frozen.yaml",
+  "classes": [
+    "D00",
+    "D10",
+    "D20",
+    "D40"
+  ],
+  "dataset_report": {
+    "train": {
+      "pairs": 4211,
+      "objects": 7394,
+      "empty_labels": 0,
+      "class_counts": {
+        "D00": 1974,
+        "D10": 555,
+        "D20": 1717,
+        "D40": 3148
+      }
+    },
+    "val": {
+      "pairs": 526,
+      "objects": 916,
+      "empty_labels": 0,
+      "class_counts": {
+        "D00": 242,
+        "D10": 69,
+        "D20": 214,
+        "D40": 391
+      }
+    },
+    "test": {
+      "pairs": 527,
+      "objects": 928,
+      "empty_labels": 0,
+      "class_counts": {
+        "D00": 252,
+        "D10": 67,
+        "D20": 212,
+        "D40": 397
+      }
+    }
+  },
+  "hyperparameters": {
+    "epochs": 160,
+    "imgsz": 640,
+    "batch": 16,
+    "nbs": 64,
+    "optimizer": "SGD",
+    "lr0": 0.01,
+    "momentum": 0.937,
+    "weight_decay": 0.0005,
+    "patience": 0,
+    "seed": 42
+  },
+  "pretrained_transfer": {
+    "mode": "semantic",
+    "source_tensors": 699,
+    "target_tensors": 715,
+    "exact_tensors": 673,
+    "semantic_candidates": 679,
+    "source_unmapped_tensors": 12,
+    "destination_missing_tensors": 8,
+    "shape_mismatch_tensors": 6,
+    "new_module_tensors": 36,
+    "layer_map": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7,
+      "8": 8,
+      "9": 9,
+      "10": 10,
+      "11": 11,
+      "12": 12,
+      "13": 13,
+      "14": 14,
+      "16": 17,
+      "17": 18,
+      "19": 21,
+      "20": 22,
+      "21": 23
+    },
+    "transferred_tensors": 673,
+    "exact_transferred_tensors": 673,
+    "class_remapped_tensors": 0,
+    "uninitialized_target_tensors": 42,
+    "exact_transferred_parameter_tensors": 340,
+    "exact_transferred_parameter_elements": 8515088
+  },
+  "best_checkpoint": "/kaggle/working/runs/yolo12s_ema_ghost_semantic_pretrained_ardd26/weights/best.pt",
+  "last_checkpoint": "/kaggle/working/runs/yolo12s_ema_ghost_semantic_pretrained_ardd26/weights/last.pt",
+  "evaluation": {
+    "validation": {
+      "precision": 0.7038243913974422,
+      "recall": 0.6526242112196973,
+      "map50": 0.725140107797928,
+      "map50_95": 0.45428974557663204,
+      "map50_95_per_class": {
+        "D00": 0.4366349286571551,
+        "D10": 0.4623674335542014,
+        "D20": 0.5025985482834018,
+        "D40": 0.4155580718117696
+      },
+      "save_dir": "/kaggle/working/runs/yolo12s_ema_ghost_semantic_pretrained_ardd26_val"
+    },
+    "test": {
+      "precision": 0.7279732579213195,
+      "recall": 0.6830080313286373,
+      "map50": 0.7581027847195082,
+      "map50_95": 0.47382326735344815,
+      "map50_95_per_class": {
+        "D00": 0.4383667189301407,
+        "D10": 0.4631990910132283,
+        "D20": 0.5203387588828706,
+        "D40": 0.4733885005875531
+      },
+      "save_dir": "/kaggle/working/runs/yolo12s_ema_ghost_semantic_pretrained_ardd26_test"
+    },
+    "pretrained_transfer": {
+      "mode": "semantic",
+      "source_tensors": 699,
+      "target_tensors": 715,
+      "exact_tensors": 673,
+      "semantic_candidates": 679,
+      "source_unmapped_tensors": 12,
+      "destination_missing_tensors": 8,
+      "shape_mismatch_tensors": 6,
+      "new_module_tensors": 36,
+      "layer_map": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+        "9": 9,
+        "10": 10,
+        "11": 11,
+        "12": 12,
+        "13": 13,
+        "14": 14,
+        "16": 17,
+        "17": 18,
+        "19": 21,
+        "20": 22,
+        "21": 23
+      },
+      "transferred_tensors": 673,
+      "exact_transferred_tensors": 673,
+      "class_remapped_tensors": 0,
+      "uninitialized_target_tensors": 42,
+      "exact_transferred_parameter_tensors": 340,
+      "exact_transferred_parameter_elements": 8515088
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "dataset_root": "/kaggle/input/datasets/danialalfayyadh/ch-rdd-2022/datasets-china-split-fix",
+  "repository_url": "https://github.com/danial2015/yolo-aceh-rdd2022.git",
+  "repository_branch": "yolo12-ema32",
+  "repository_commit": "419ee77d4c9dc716f312d5569972252897a55cf6",
+  "model_yaml": "/kaggle/working/yolo-aceh-rdd2022/ultralytics/cfg/models/12/yolo12-ema32.yaml",
+  "ema_factor": 32,
+  "ghost_conv_positions": [],
+  "pretrained_transfer": {
+    "source_weights": "yolo12s.pt",
+    "policy": "remap all compatible YOLO12s tensors around EMA insertion after source layer 4",
+    "transferred_tensors": 691,
+    "target_tensors": 697,
+    "uninitialized_tensors": 6,
+    "uninitialized_tensor_names": [
+      "model.5.conv1x1.weight",
+      "model.5.conv1x1.bias",
+      "model.5.conv3x3.weight",
+      "model.5.conv3x3.bias",
+      "model.5.gn.weight",
+      "model.5.gn.bias"
+    ]
+  },
+  "epochs": 160,
+  "imgsz": 640,
+  "batch": 16,
+  "nbs": 64,
+  "optimizer": "SGD",
+  "lr0": 0.01,
+  "momentum": 0.937,
+  "weight_decay": 0.0005,
+  "seed": 42,
+  "best_checkpoint": "/kaggle/working/runs/yolo12s_ema32_ch_rdd2022_pretrained/weights/best.pt",
+  "last_checkpoint": "/kaggle/working/runs/yolo12s_ema32_ch_rdd2022_pretrained/weights/last.pt"
+}
