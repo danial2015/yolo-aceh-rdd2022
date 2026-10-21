@@ -211,3 +211,13 @@ results.csv
 fuzz-sources/
 fuzz-datasets/
 fuzz-models/
+
+# Curated research evidence: allow only deliberately selected diagnostics/logs.
+!/research/results/**/args.yaml
+!/research/results/**/results.csv
+!/research/results/**/results.png
+!/research/results/**/BoxPR_curve.png
+!/research/results/**/confusion_matrix_normalized.png
+/research/**/*.zip
+/research/**/train_batch*
+/research/**/val_batch*

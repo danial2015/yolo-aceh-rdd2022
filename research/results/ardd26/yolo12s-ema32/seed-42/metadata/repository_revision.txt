@@ -1,0 +1,3 @@
+repository=https://github.com/danial2015/yolo-aceh-rdd2022.git
+branch=yolo12-ema32
+commit=419ee77d4c9dc716f312d5569972252897a55cf6

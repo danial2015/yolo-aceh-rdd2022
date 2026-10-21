@@ -1,0 +1,3 @@
+repository=https://github.com/danial2015/yolo-aceh-rdd2022.git
+branch=yolo12-ghost-conv
+commit=57ea1b42c9020c28db85aed078dd96d9c7ef6dd0

@@ -1,0 +1,16 @@
+{
+  "validation": {
+    "precision": 0.8770062156550965,
+    "recall": 0.8445101663577022,
+    "map50": 0.8830636873778575,
+    "map50_95": 0.588230383610944,
+    "save_dir": "/kaggle/working/runs/yolov8s_original_pretrained_ch_rdd2022_val"
+  },
+  "test": {
+    "precision": 0.8664008054873269,
+    "recall": 0.7925700114591145,
+    "map50": 0.8507835552052396,
+    "map50_95": 0.5610543961746011,
+    "save_dir": "/kaggle/working/runs/yolov8s_original_pretrained_ch_rdd2022_test"
+  }
+}

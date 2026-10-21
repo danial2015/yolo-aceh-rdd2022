@@ -1,0 +1,65 @@
+{
+  "model": "YOLO12s + L-Ghost + EMA-32",
+  "model_yaml": "/kaggle/working/yolo12s-lghost-ema32-ardd26-source/ultralytics/cfg/models/12/yolo12s-lghost-ema32.yaml",
+  "pretrained": "yolo12s.pt",
+  "repository": "https://github.com/danial2015/yolo-aceh-rdd2022.git",
+  "source_branch": "feat/yolo12s-lghost-ema32",
+  "source_commit": "14cbeb1b9a136c17da4ff0acfe01a3f625cd5e3e",
+  "source_notebook": "aceh-ardd-yolo12-baseline (1).ipynb",
+  "source_notebook_sha256": "041497ac45989ee40e7844b0a8823c19174026dd864727315d1324fdeb7a88c5",
+  "lg_groups": 4,
+  "lg_pruning_ratio": 0.6,
+  "dataset_root": "/kaggle/input/datasets/danialalfayyadh/ardd26/datasets_here",
+  "classes": [
+    "D00",
+    "D10",
+    "D20",
+    "D40"
+  ],
+  "dataset_report": {
+    "train": {
+      "pairs": 4211,
+      "objects": 7394,
+      "empty_labels": 0,
+      "classes": {
+        "D00": 1974,
+        "D10": 555,
+        "D20": 1717,
+        "D40": 3148
+      }
+    },
+    "val": {
+      "pairs": 526,
+      "objects": 916,
+      "empty_labels": 0,
+      "classes": {
+        "D00": 242,
+        "D10": 69,
+        "D20": 214,
+        "D40": 391
+      }
+    },
+    "test": {
+      "pairs": 527,
+      "objects": 928,
+      "empty_labels": 0,
+      "classes": {
+        "D00": 252,
+        "D10": 67,
+        "D20": 212,
+        "D40": 397
+      }
+    }
+  },
+  "epochs": 160,
+  "imgsz": 640,
+  "batch": 16,
+  "nbs": 64,
+  "optimizer": "SGD",
+  "lr0": 0.01,
+  "momentum": 0.937,
+  "weight_decay": 0.0005,
+  "seed": 42,
+  "best_checkpoint": "/kaggle/working/runs/yolo12s_lghost_ema32_pretrained_ardd26/weights/best.pt",
+  "last_checkpoint": "/kaggle/working/runs/yolo12s_lghost_ema32_pretrained_ardd26/weights/last.pt"
+}

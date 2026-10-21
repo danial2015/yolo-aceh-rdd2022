@@ -1,0 +1,3 @@
+{"completed_epochs": 32, "blocks": [{"module": "model.16.lg", "stage": 1, "retained_fraction": 0.75}, {"module": "model.20.lg", "stage": 1, "retained_fraction": 0.75}]}
+{"completed_epochs": 64, "blocks": [{"module": "model.16.lg", "stage": 2, "retained_fraction": 0.5}, {"module": "model.20.lg", "stage": 2, "retained_fraction": 0.5}]}
+{"completed_epochs": 96, "blocks": [{"module": "model.16.lg", "stage": 3, "retained_fraction": 0.25}, {"module": "model.20.lg", "stage": 3, "retained_fraction": 0.25}]}

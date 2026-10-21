@@ -1,3 +1,13 @@
+# YOLO Aceh / RDD2022 — Hasil Penelitian
+
+Hasil training ARDD26 dan CH-RDD2022 yang telah diseleksi tersedia di
+[`research/results`](research/results/README.md), termasuk evaluasi 23 run, ringkasan multi-seed,
+konfigurasi, riwayat training dan grafik utama. Checkpoint dan arsip ZIP tidak dimasukkan ke Git.
+Implementasi model eksperimen mengikuti revisi/branch penelitian yang dicatat pada artefak;
+kode `main` di bawah merupakan basis Ultralytics.
+
+---
+
 <div align="center">
   <p>
     <a href="https://www.ultralytics.com/events/yolovision?utm_source=github&utm_medium=social&utm_campaign=yolovision26&utm_content=banner" target="_blank">
